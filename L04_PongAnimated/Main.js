@@ -11,7 +11,7 @@ var L03_PongPaddle;
     let keysPressed = {};
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("keyup", handleKeyup);
-    let ballSpeedVector = new f.Vector3(generateRandomNumber(), generateRandomNumber(), 0);
+    let ballSpeed = new f.Vector3(generateRandomNumber(), generateRandomNumber(), 0);
     function createPong() {
         let pong = new f.Node("Pong");
         let mtrSolidWhite = new f.Material("SolidWhite", f.ShaderUniColor, new f.CoatColored(new f.Color(1, 1, 1, 1)));
@@ -75,10 +75,10 @@ var L03_PongPaddle;
         let borderX = 25;
         let borderY = 17.5;
         if (borderX < ball.cmpTransform.local.translation.x || -borderX >= ball.cmpTransform.local.translation.x)
-            ballSpeedVector.x = ballSpeedVector.x * -1;
+            ballSpeed.x = ballSpeed.x * -1;
         if (borderY <= ball.cmpTransform.local.translation.y || -borderY >= ball.cmpTransform.local.translation.y)
-            ballSpeedVector.y = ballSpeedVector.y * -1;
-        ball.cmpTransform.local.translate(ballSpeedVector);
+            ballSpeed.y = ballSpeed.y * -1;
+        ball.cmpTransform.local.translate(ballSpeed);
     }
     //Geschwindigkeits-Vektor
     function generateRandomNumber() {

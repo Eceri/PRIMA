@@ -153,17 +153,25 @@
         "version": "b209a815904a485328677714ef8c4ddd2dcf4040154fa204d25cbf31cd4ff0f3",
         "signature": "b209a815904a485328677714ef8c4ddd2dcf4040154fa204d25cbf31cd4ff0f3"
       },
-      "./node_modules/@types/webgl2/index.d.ts": {
-        "version": "bc7770ea3502034bdb3fec4ea10f7c79559ae940510c0d9ea36d356478c6e56f",
-        "signature": "bc7770ea3502034bdb3fec4ea10f7c79559ae940510c0d9ea36d356478c6e56f"
-      },
       "./fudge/fudgecore.d.ts": {
-        "version": "04a33876bc0390695a284f43b8bd8153fce38ec2afde5f4853cb52fb0e9be571",
-        "signature": "04a33876bc0390695a284f43b8bd8153fce38ec2afde5f4853cb52fb0e9be571"
+        "version": "1769f56f1aa6dd715b42276abfb1f477714049320e7fe9b4e81e69395a17dff1",
+        "signature": "1769f56f1aa6dd715b42276abfb1f477714049320e7fe9b4e81e69395a17dff1"
       },
       "./l02_first_fudge/main.ts": {
         "version": "565dc0228b7b989676a2e297dc16cc70f476e725c05ab39a5af982ceebc2ec94",
         "signature": "33c90c9999641849be30393dd7134c6f93e2303c9582cb152063a4dd0659f7ee"
+      },
+      "./l03_pongpaddle/main.ts": {
+        "version": "ab0f1c3298e7b95f806001fe74e0c62d20d5d31b58bebd3853ae3368df87f071",
+        "signature": "f458f4a0ec81e7eb857c6b52aebb5dcc196ee26fd11948363ce5cf2b70fecb1e"
+      },
+      "./l04_ponganimated/main.ts": {
+        "version": "5e62d864dfd39f0c0a85744419f481ebc5ce852da895b6b70e859f9b219fdc94",
+        "signature": "f458f4a0ec81e7eb857c6b52aebb5dcc196ee26fd11948363ce5cf2b70fecb1e"
+      },
+      "./l05_pongreflection/main.ts": {
+        "version": "ea85aec9fecc0766350377c061697fd4aae103a254747e40fa13b9f1a82cffb2",
+        "signature": "37896c532e611b6825a7f4386e8f7a44f3f384e2f8474bd1fc5a79e190018b83"
       },
       "./node_modules/@types/node/globals.d.ts": {
         "version": "4d0e3b8334392a2e0adef9caf867118678fb8f38da90d8003184debd62d30f3b",
@@ -341,6 +349,10 @@
         "version": "765fc34423b93c2ab763670d8d11d99e5f47387c13c161d6f1640dd6d91b7d1c",
         "signature": "765fc34423b93c2ab763670d8d11d99e5f47387c13c161d6f1640dd6d91b7d1c"
       },
+      "./node_modules/@types/webgl2/index.d.ts": {
+        "version": "bc7770ea3502034bdb3fec4ea10f7c79559ae940510c0d9ea36d356478c6e56f",
+        "signature": "bc7770ea3502034bdb3fec4ea10f7c79559ae940510c0d9ea36d356478c6e56f"
+      },
       "./node_modules/@types/ws/index.d.ts": {
         "version": "edf9f7a505ebd55d49ef0a6ab571b131480f558498c4141b736bdbd80ce98311",
         "signature": "edf9f7a505ebd55d49ef0a6ab571b131480f558498c4141b736bdbd80ce98311"
@@ -363,6 +375,7 @@
       "noImplicitReturns": true,
       "moduleResolution": 2,
       "experimentalDecorators": true,
+      "skipLibCheck": true,
       "project": "./tsconfig.json",
       "watch": true,
       "configFilePath": "./tsconfig.json"
@@ -520,16 +533,23 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./node_modules/@types/webgl2/index.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "./fudge/fudgecore.d.ts": [
-        "./node_modules/@types/webgl2/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./l02_first_fudge/main.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l03_pongpaddle/main.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l04_ponganimated/main.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l05_pongreflection/main.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -799,6 +819,10 @@
         "./node_modules/@types/node/ts3.2/util.d.ts",
         "./node_modules/@types/node/ts3.2/globals.d.ts",
         "./node_modules/@types/node/util.d.ts"
+      ],
+      "./node_modules/@types/webgl2/index.d.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./node_modules/@types/ws/index.d.ts": [
         "./node_modules/@types/node/events.d.ts",
@@ -964,12 +988,7 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "./node_modules/@types/webgl2/index.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "./fudge/fudgecore.d.ts": [
-        "./node_modules/@types/webgl2/index.d.ts",
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1240,6 +1259,10 @@
         "./node_modules/@types/node/ts3.2/globals.d.ts",
         "./node_modules/@types/node/util.d.ts"
       ],
+      "./node_modules/@types/webgl2/index.d.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
       "./node_modules/@types/ws/index.d.ts": [
         "./node_modules/@types/node/events.d.ts",
         "./node_modules/@types/node/http.d.ts",
@@ -1259,162 +1282,7 @@
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2018.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.d.ts",
-      [
-        "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.d.ts",
-        [
-          {
-            "file": "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.d.ts",
-            "start": 673353,
-            "length": 22,
-            "code": 2430,
-            "category": 1,
-            "messageText": {
-              "messageText": "Interface 'WebGL2RenderingContext' incorrectly extends interface 'WebGL2RenderingContextBase'.",
-              "category": 1,
-              "code": 2430,
-              "next": [
-                {
-                  "messageText": "Types of property 'clearBufferfv' are incompatible.",
-                  "category": 1,
-                  "code": 2326,
-                  "next": [
-                    {
-                      "messageText": "Type '(buffer: number, drawbuffer: number, values: Float32Array | ArrayLike<number>, srcOffset?: number) => void' is not assignable to type '{ (buffer: number, drawbuffer: number, values: Float32Array | number[], srcOffset?: number): void; (buffer: number, drawbuffer: number, values: Iterable<number>, srcOffset?: number): void; }'.",
-                      "category": 1,
-                      "code": 2322,
-                      "next": [
-                        {
-                          "messageText": "Types of parameters 'values' and 'values' are incompatible.",
-                          "category": 1,
-                          "code": 2328,
-                          "next": [
-                            {
-                              "messageText": "Type 'Iterable<number>' is not assignable to type 'Float32Array | ArrayLike<number>'.",
-                              "category": 1,
-                              "code": 2322,
-                              "next": [
-                                {
-                                  "messageText": "Property 'length' is missing in type 'Iterable<number>' but required in type 'ArrayLike<number>'.",
-                                  "category": 1,
-                                  "code": 2741
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            "relatedInformation": [
-              {
-                "file": "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es5.d.ts",
-                "start": 67258,
-                "length": 6,
-                "messageText": "'length' is declared here.",
-                "category": 3,
-                "code": 2728
-              }
-            ]
-          },
-          {
-            "file": "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.d.ts",
-            "start": 673353,
-            "length": 22,
-            "code": 2430,
-            "category": 1,
-            "messageText": {
-              "messageText": "Interface 'WebGL2RenderingContext' incorrectly extends interface 'WebGL2RenderingContextOverloads'.",
-              "category": 1,
-              "code": 2430,
-              "next": [
-                {
-                  "messageText": "Types of property 'uniform1fv' are incompatible.",
-                  "category": 1,
-                  "code": 2326,
-                  "next": [
-                    {
-                      "messageText": "Type '(location: WebGLUniformLocation, data: Float32Array | ArrayLike<number>, srcOffset?: number, srcLength?: number) => void' is not assignable to type '{ (location: WebGLUniformLocation, data: Float32Array | number[], srcOffset?: number, srcLength?: number): void; (location: WebGLUniformLocation, data: Iterable<number>, srcOffset?: number, srcLength?: number): void; }'.",
-                      "category": 1,
-                      "code": 2322,
-                      "next": [
-                        {
-                          "messageText": "Types of parameters 'data' and 'data' are incompatible.",
-                          "category": 1,
-                          "code": 2328,
-                          "next": [
-                            {
-                              "messageText": "Type 'Iterable<number>' is not assignable to type 'Float32Array | ArrayLike<number>'.",
-                              "category": 1,
-                              "code": 2322,
-                              "next": [
-                                {
-                                  "messageText": "Type 'Iterable<number>' is not assignable to type 'ArrayLike<number>'.",
-                                  "category": 1,
-                                  "code": 2322
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          },
-          {
-            "file": "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.d.ts",
-            "start": 673353,
-            "length": 22,
-            "code": 2430,
-            "category": 1,
-            "messageText": {
-              "messageText": "Interface 'WebGL2RenderingContext' incorrectly extends interface 'WebGLRenderingContext'.",
-              "category": 1,
-              "code": 2430,
-              "next": [
-                {
-                  "messageText": "Types of property 'uniform1fv' are incompatible.",
-                  "category": 1,
-                  "code": 2326,
-                  "next": [
-                    {
-                      "messageText": "Type '(location: WebGLUniformLocation, data: Float32Array | ArrayLike<number>, srcOffset?: number, srcLength?: number) => void' is not assignable to type '{ (location: WebGLUniformLocation, v: Float32Array | number[]): void; (location: WebGLUniformLocation, v: Iterable<number>): void; }'.",
-                      "category": 1,
-                      "code": 2322,
-                      "next": [
-                        {
-                          "messageText": "Types of parameters 'data' and 'v' are incompatible.",
-                          "category": 1,
-                          "code": 2328,
-                          "next": [
-                            {
-                              "messageText": "Type 'Iterable<number>' is not assignable to type 'Float32Array | ArrayLike<number>'.",
-                              "category": 1,
-                              "code": 2322,
-                              "next": [
-                                {
-                                  "messageText": "Type 'Iterable<number>' is not assignable to type 'ArrayLike<number>'.",
-                                  "category": 1,
-                                  "code": 2322
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          }
-        ]
-      ],
+      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.iterable.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.scripthost.d.ts",
@@ -1445,9 +1313,11 @@
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.full.d.ts",
-      "./node_modules/@types/webgl2/index.d.ts",
       "./fudge/fudgecore.d.ts",
       "./l02_first_fudge/main.ts",
+      "./l03_pongpaddle/main.ts",
+      "./l04_ponganimated/main.ts",
+      "./l05_pongreflection/main.ts",
       "./node_modules/@types/node/globals.d.ts",
       "./node_modules/@types/node/assert.d.ts",
       "./node_modules/@types/node/async_hooks.d.ts",
@@ -1492,6 +1362,7 @@
       "./node_modules/@types/node/ts3.2/util.d.ts",
       "./node_modules/@types/node/ts3.2/globals.d.ts",
       "./node_modules/@types/node/ts3.2/index.d.ts",
+      "./node_modules/@types/webgl2/index.d.ts",
       "./node_modules/@types/ws/index.d.ts"
     ]
   },

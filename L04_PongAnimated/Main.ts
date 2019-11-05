@@ -16,7 +16,7 @@ namespace L03_PongPaddle {
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("keyup", handleKeyup);
 
-    let ballSpeedVector: f.Vector3 = new f.Vector3(generateRandomNumber(), generateRandomNumber(), 0);
+    let ballSpeed: f.Vector3 = new f.Vector3(generateRandomNumber(), generateRandomNumber(), 0);
     function createPong(){
         let pong: f.Node = new f.Node("Pong");    
     
@@ -82,26 +82,25 @@ namespace L03_PongPaddle {
             paddleLeft.cmpTransform.local.translateY(0.5)
         if(keysPressed[f.KEYBOARD_CODE.S])
             paddleLeft.cmpTransform.local.translateY(-0.5)
-        f.RenderManager.update();
-        viewport.draw();
+        f.RenderManager.update()
+        viewport.draw()
     }
 
     function handleKeydown(_event: KeyboardEvent): void{
-        keysPressed[_event.code] = true;
+        keysPressed[_event.code] = true
     }
     function handleKeyup(_event: KeyboardEvent): void{
-        keysPressed[_event.code] = false;
+        keysPressed[_event.code] = false
     }
 
     function moveBall(){
         let borderX = 25
         let borderY = 17.5   
         if(borderX < ball.cmpTransform.local.translation.x || -borderX >= ball.cmpTransform.local.translation.x)
-            ballSpeedVector.x = ballSpeedVector.x * -1
+            ballSpeed.x = ballSpeed.x * -1
         if(borderY <= ball.cmpTransform.local.translation.y || -borderY >= ball.cmpTransform.local.translation.y)
-            ballSpeedVector.y = ballSpeedVector.y * -1
-        ball.cmpTransform.local.translate(ballSpeedVector);
-
+            ballSpeed.y = ballSpeed.y * -1
+        ball.cmpTransform.local.translate(ballSpeed)
     }
     //Geschwindigkeits-Vektor
     function generateRandomNumber(): number{

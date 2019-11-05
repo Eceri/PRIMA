@@ -1,2 +1,2 @@
-declare namespace L03_PongPaddle {
+declare namespace L05_PongPaddle {
 }
