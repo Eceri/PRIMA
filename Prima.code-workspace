@@ -1,7 +1,12 @@
 {
 	"folders": [
 		{
+			"name": "PRIMA",
 			"path": "."
+		},
+		{
+			"name": "Fudge",
+			"path": "E:\\AIN\\6_Semester\\Prima Deloro\\Prima\\Fudge"
 		}
 	],
 	"settings": {}

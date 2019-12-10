@@ -76,8 +76,8 @@ var L03_PongPaddle;
         let borderY = 17.5;
         if (borderX < ball.cmpTransform.local.translation.x || -borderX >= ball.cmpTransform.local.translation.x)
             ballSpeed.x = ballSpeed.x * -1;
-        if (borderY <= ball.cmpTransform.local.translation.y || -borderY >= ball.cmpTransform.local.translation.y)
-            ballSpeed.y = ballSpeed.y * -1;
+        if (borderY <= ball.cmpTransform.local.translation.x || -borderY >= ball.cmpTransform.local.translation.x)
+            ballSpeed.x = ballSpeed.x * -1;
         ball.cmpTransform.local.translate(ballSpeed);
     }
     //Geschwindigkeits-Vektor

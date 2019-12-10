@@ -112,22 +112,22 @@ namespace L05_PongPaddle {
         let objectTranslation = _object.cmpTransform.local.translation
 
         let rectX = _rect.cmpTransform.local.translation.x
-        let rectY = _rect.cmpTransform.local.translation.y
+        let rectY = _rect.cmpTransform.local.translation.x
         let xDistance: number = _rect.cmpTransform.local.scaling.x / 2
-        let yDistance: number = _rect.cmpTransform.local.scaling.y / 2
+        let yDistance: number = _rect.cmpTransform.local.scaling.x / 2
         let topLeftCorner: f.Vector3 = new f.Vector3(rectX - xDistance, rectY + yDistance, 0)
         let bottomRightCorner: f.Vector3 = new f.Vector3(rectX + xDistance, rectY - yDistance, 0)
         
         return objectTranslation.x > topLeftCorner.x &&
-            objectTranslation.y < topLeftCorner.y &&
+            objectTranslation.x < topLeftCorner.x &&
             objectTranslation.x < bottomRightCorner.x &&
-            objectTranslation.y > bottomRightCorner.y
+            objectTranslation.x > bottomRightCorner.x
     }
     function processHit(_node: f.Node){
         switch(_node.name){
             case "wallTop":
             case "wallBottom":
-                ballSpeed.y *= -1
+                ballSpeed.x *= -1
                 break
             case "paddleRight":
             case "paddleLeft":

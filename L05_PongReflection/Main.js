@@ -91,21 +91,21 @@ var L05_PongPaddle;
     function detectHit(_object, _rect) {
         let objectTranslation = _object.cmpTransform.local.translation;
         let rectX = _rect.cmpTransform.local.translation.x;
-        let rectY = _rect.cmpTransform.local.translation.y;
+        let rectY = _rect.cmpTransform.local.translation.x;
         let xDistance = _rect.cmpTransform.local.scaling.x / 2;
-        let yDistance = _rect.cmpTransform.local.scaling.y / 2;
+        let yDistance = _rect.cmpTransform.local.scaling.x / 2;
         let topLeftCorner = new f.Vector3(rectX - xDistance, rectY + yDistance, 0);
         let bottomRightCorner = new f.Vector3(rectX + xDistance, rectY - yDistance, 0);
         return objectTranslation.x > topLeftCorner.x &&
-            objectTranslation.y < topLeftCorner.y &&
+            objectTranslation.x < topLeftCorner.x &&
             objectTranslation.x < bottomRightCorner.x &&
-            objectTranslation.y > bottomRightCorner.y;
+            objectTranslation.x > bottomRightCorner.x;
     }
     function processHit(_node) {
         switch (_node.name) {
             case "wallTop":
             case "wallBottom":
-                ballSpeed.y *= -1;
+                ballSpeed.x *= -1;
                 break;
             case "paddleRight":
             case "paddleLeft":
