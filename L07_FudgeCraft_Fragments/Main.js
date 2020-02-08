@@ -29,7 +29,7 @@ var L07_FudgeCraft_Fragments;
         // ƒ.Debug.log("Fragment", fragment);
         fragment.addComponent(new f.ComponentTransform(f.Matrix4x4.TRANSLATION(f.Vector3.X(-2))));
         game.appendChild(fragment);
-        let cmpLight = new f.ComponentLight(new f.LightDirectional(f.Color.WHITE));
+        let cmpLight = new f.ComponentLight(new f.LightDirectional(f.Color.CSS("WHITE")));
         cmpLight.pivot.lookAt(new f.Vector3(0.5, 1, 0.8));
         game.addComponent(cmpLight);
         viewport = new f.Viewport();

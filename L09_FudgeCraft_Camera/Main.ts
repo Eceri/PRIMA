@@ -15,10 +15,10 @@ namespace L09_FudgeCraft_Camera {
     canvas.addEventListener("click", canvas.requestPointerLock)
     ƒ.Debug.log("Canvas", canvas);
 
-    let cmpLight: ƒ.ComponentLight = new ƒ.ComponentLight(new ƒ.LightDirectional(ƒ.Color.WHITE));
+    let cmpLight: ƒ.ComponentLight = new ƒ.ComponentLight(new ƒ.LightDirectional(ƒ.Color.CSS("White")));
     cmpLight.pivot.lookAt(new ƒ.Vector3(0.5, 1, 0.8));
     game.addComponent(cmpLight);
-    let cmpLightAmbient: ƒ.ComponentLight = new ƒ.ComponentLight(new ƒ.LightAmbient(ƒ.Color.DARK_GREY));
+    let cmpLightAmbient: ƒ.ComponentLight = new ƒ.ComponentLight(new ƒ.LightAmbient(ƒ.Color.CSS("DarkGrey")));
     game.addComponent(cmpLightAmbient);
 
     viewport = new ƒ.Viewport();

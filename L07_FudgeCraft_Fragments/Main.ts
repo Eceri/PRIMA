@@ -38,7 +38,7 @@ namespace L07_FudgeCraft_Fragments {
     game.appendChild(fragment);
 
     let cmpLight: f.ComponentLight = new f.ComponentLight(
-      new f.LightDirectional(f.Color.WHITE)
+      new f.LightDirectional(f.Color.CSS("WHITE"))
     );
     cmpLight.pivot.lookAt(new f.Vector3(0.5, 1, 0.8));
     game.addComponent(cmpLight);

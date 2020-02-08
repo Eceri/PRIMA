@@ -12,7 +12,7 @@ namespace L09_FudgeCraft_Camera {
       this.camera = new ƒ.ComponentCamera();
       this.camera.pivot.translate(new ƒ.Vector3(0, 0, 20)); // default view angle
       this.camera.pivot.lookAt(ƒ.Vector3.ZERO());
-      this.camera.backgroundColor = ƒ.Color.WHITE;
+      this.camera.backgroundColor = ƒ.Color.CSS("WHITE");
 
       this.xAxisRotator = new ƒ.Node("xAxisRotation");
 

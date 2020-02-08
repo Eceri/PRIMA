@@ -154,8 +154,8 @@
         "signature": "b209a815904a485328677714ef8c4ddd2dcf4040154fa204d25cbf31cd4ff0f3"
       },
       "./fudge/fudgecore.d.ts": {
-        "version": "b0fe0a492cc1fb70750ac0dfa5bed005271bb8d04d22c31c40e88bd21c7329c7",
-        "signature": "b0fe0a492cc1fb70750ac0dfa5bed005271bb8d04d22c31c40e88bd21c7329c7"
+        "version": "0904e843cf6ded51f0533d0780c48aa61825feeca87144a6eaba23b8f6731000",
+        "signature": "0904e843cf6ded51f0533d0780c48aa61825feeca87144a6eaba23b8f6731000"
       },
       "./l02_first_fudge/main.ts": {
         "version": "565dc0228b7b989676a2e297dc16cc70f476e725c05ab39a5af982ceebc2ec94",
@@ -174,7 +174,7 @@
         "signature": "37896c532e611b6825a7f4386e8f7a44f3f384e2f8474bd1fc5a79e190018b83"
       },
       "./l07_fudgecraft_fragments/cube.ts": {
-        "version": "5125b65454d4a244e45e410d35d06fd6d2173e41c2c6af9431a6697b74eed8e2",
+        "version": "7dc199b84bb18b96f5d37c2abc75c321d33deb52290398aa91b5720de8c409c7",
         "signature": "d3d38505a5345b87449bc9d849e5d809033f59b4003d5f729f7569c72ae51dac"
       },
       "./l07_fudgecraft_fragments/fragment.ts": {
@@ -186,7 +186,7 @@
         "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
       },
       "./l07_fudgecraft_fragments/main.ts": {
-        "version": "10bf9252ec06f0bba321e70a0662b842d1e1cc8b69bfe4a4c02c0b336f545f6f",
+        "version": "cbd88626f36070543f6b089ae71bf631f938de6aeb655964f6f673f4a91d1549",
         "signature": "b544a145eba8a4b070914a264977313b45414aac72d213daf54994d7f1ee5692"
       },
       "./l08_fudgecraft_collision/control.ts": {
@@ -194,7 +194,7 @@
         "signature": "59ab5307d5740650872484e367e5b46e9dc7d0c870615ca1422433d9854a1d4d"
       },
       "./l08_fudgecraft_collision/cube.ts": {
-        "version": "61e36563106d03c4c4688d75b0f48f7faf6f47eb2fb7c4e63c6dfdfd400a874f",
+        "version": "a0637ba15dbf6970d4ee4f24f2197566f6eb162125f8b901742e0510683108e4",
         "signature": "4ab053d344d749a1c68c02cfebd43c8cebc38d703cc48349f899d5934ad5d9ac"
       },
       "./l08_fudgecraft_collision/fragment.ts": {
@@ -206,7 +206,7 @@
         "signature": "2ba6600d0852d4864484d12628990541150bb9623a80af1febfd4da9a133b936"
       },
       "./l08_fudgecraft_collision/main.ts": {
-        "version": "128d585d68534993c286b0ec056aba08688a91bb5a7506c9a0f2d02187d833e7",
+        "version": "0c5e796dfa6f97875d6fac4ff0234378715689b8ea3276df73516105d1250ea6",
         "signature": "a638b446371065c1502c4bdd9e18293a08a89a5d28b8d45d12370e829e87a0d9"
       },
       "./l08_fudgecraft_collision/test.ts": {
@@ -214,7 +214,7 @@
         "signature": "4e9855736da024137edd3f3a0c9bd30292f23ad8c126dad38bbb15adfdc87846"
       },
       "./l09_fudgecraft_camera/cameracontrol.ts": {
-        "version": "1ddc539e7046d237265191e1d57377bfb5cb2b0abf916e3a465f47e99bbe683f",
+        "version": "fcfab1f55dbdde9d011bbed04b53f91db5f9a612119cfcc24415bbd8cf49ba5b",
         "signature": "ad39d3ca8badea42b5640ab742548badf9e7b6a594d2ae164046a90cb3e9d4e9"
       },
       "./l09_fudgecraft_camera/control.ts": {
@@ -222,7 +222,7 @@
         "signature": "5e4780584c803f404633dc6847744db9695fe4e4aa1e44261c31ccc67e5cf660"
       },
       "./l09_fudgecraft_camera/cube.ts": {
-        "version": "45bf3e456ab7f4e68649dd39ca7f9568b8c9e5a232c2edf7aae7aca09622c416",
+        "version": "d5227f8dd1559e64fb0ed0e83138a1f48dedaa78240a1d2a5c29319b7903ec14",
         "signature": "742b04ed38c573efa94a52ec28ef9ca8df554e4bdca772be7c9c2179f5a191e8"
       },
       "./l09_fudgecraft_camera/fragment.ts": {
@@ -234,12 +234,48 @@
         "signature": "0c0dd25216f5ca1ae326cee52c7cbe59b153523098e51f43637697c05571fcf8"
       },
       "./l09_fudgecraft_camera/main.ts": {
-        "version": "15e0c2e3bcf4dba0563e095e367018942579c685dbe55d91253576a3e92c60b9",
+        "version": "46be5c759bae64ab2eb9dfd8b813f4f106026e992b4f80f7e9171f22e6274b96",
         "signature": "32fe271e8df915b78e0cff9e4e4e3ece690a488fbf7647fc793569cfa53bdae6"
       },
       "./l09_fudgecraft_camera/test.ts": {
         "version": "1c9d8bf6393c664d447a1f944a4797c70064bb801ac8e423516ecb0c322bff57",
         "signature": "8801990c85f2bc4f10b01acadf5fef8e73f3cb2e7eb0ee75f7c864d1cd70ef06"
+      },
+      "./l10_fudgecraft_combos/cameracontrol.ts": {
+        "version": "bb2f7a6c2172056a1c3b3c5b3910d45db93c8b6ce04ac871fc32fadfa0e86856",
+        "signature": "f4648598ab60557c29be02e2ca3663f702444e5e0bef1b902100d21be8b22da4"
+      },
+      "./l10_fudgecraft_combos/combos.ts": {
+        "version": "93c7cdbb20310e993ffc6f7a0e5af55ff0808ae85d2592964043cad50d5ef729",
+        "signature": "c267319e85bc1adbfba3ce4667ad445c41d7028b4c681a9c837ff1a1ebf86fcf"
+      },
+      "./l10_fudgecraft_combos/control.ts": {
+        "version": "ddc95f63f8ecbbdef3c060070e4fb2477474a2dd0544495f6c587a1798c1815d",
+        "signature": "7a2a334c3008573e15aff828fa2587213ead9b05d350cdb68a4e921d6b7b8a5b"
+      },
+      "./l10_fudgecraft_combos/cube.ts": {
+        "version": "2ceb04b644caa9161ce242888b2a38a7c6979f5043b36b0efc81fad39a8f10c1",
+        "signature": "b5a272492713eabc1bc6b5c3b14dd471bb279224914d50a63c9b135d19cffbe3"
+      },
+      "./l10_fudgecraft_combos/fragment.ts": {
+        "version": "e751dd012681d10ef380e773b07ebfba13f96c40cbeb46ebeb58ec15f3feabfa",
+        "signature": "8873808f645f2461a82f7f9f3eb4cab11d8132e973e6eb94b39f27cf081a384c"
+      },
+      "./l10_fudgecraft_combos/grid.ts": {
+        "version": "4921c64961afd01dee472947029759b80d893770222ea51ee74cf9ee469fa9f2",
+        "signature": "5225051ca1af1ce9b35650d98cbf3d5874d94b7705054a3a7a9d8f62591dde65"
+      },
+      "./l10_fudgecraft_combos/main.ts": {
+        "version": "70b0a09e29565da7439f82e5f8af387d10d3cd53cc585a5092f7810a6fc74991",
+        "signature": "355d6a2703424c0b967c3c8cfecda18159c59b0b06b81ec43ab10e4ee4210d86"
+      },
+      "./l10_fudgecraft_combos/test.ts": {
+        "version": "ebb02d9c3d77b1403393e7a4fca78b9ebbbc8e59bf339499f01d46eeb075ff9b",
+        "signature": "f936aa382d202232245c0ac5da48d905e40c63db12f93894a892e058e1669bb7"
+      },
+      "./l11_sidescroller/main.ts": {
+        "version": "18513252c7d16d2a92c4e31333101fa14bb4130d8e15e790b3428eb0bbd6c309",
+        "signature": "e1bb9dc08ff77a8229c7b3d3fa1ebbc672b86387ec1021f298c2559d57f02e4c"
       },
       "./pong/fudge/fudgecore.d.ts": {
         "version": "1769f56f1aa6dd715b42276abfb1f477714049320e7fe9b4e81e69395a17dff1",
@@ -690,6 +726,42 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./l09_fudgecraft_camera/test.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/cameracontrol.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/combos.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/control.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/cube.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/fragment.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/grid.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/main.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l10_fudgecraft_combos/test.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l11_sidescroller/main.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1476,12 +1548,21 @@
       "./l08_fudgecraft_collision/grid.ts",
       "./l08_fudgecraft_collision/main.ts",
       "./l08_fudgecraft_collision/test.ts",
+      "./l09_fudgecraft_camera/cameracontrol.ts",
       "./l09_fudgecraft_camera/control.ts",
       "./l09_fudgecraft_camera/cube.ts",
       "./l09_fudgecraft_camera/fragment.ts",
       "./l09_fudgecraft_camera/grid.ts",
       "./l09_fudgecraft_camera/main.ts",
       "./l09_fudgecraft_camera/test.ts",
+      "./l10_fudgecraft_combos/cameracontrol.ts",
+      "./l10_fudgecraft_combos/combos.ts",
+      "./l10_fudgecraft_combos/control.ts",
+      "./l10_fudgecraft_combos/cube.ts",
+      "./l10_fudgecraft_combos/fragment.ts",
+      "./l10_fudgecraft_combos/grid.ts",
+      "./l10_fudgecraft_combos/main.ts",
+      "./l10_fudgecraft_combos/test.ts",
       "./pong/fudge/fudgecore.d.ts",
       "./node_modules/@types/node/globals.d.ts",
       "./node_modules/@types/node/assert.d.ts",
@@ -1529,7 +1610,7 @@
       "./node_modules/@types/node/ts3.2/index.d.ts",
       "./node_modules/@types/webgl2/index.d.ts",
       "./node_modules/@types/ws/index.d.ts",
-      "./l09_fudgecraft_camera/cameracontrol.ts"
+      "./l11_sidescroller/main.ts"
     ]
   },
   "version": "3.6.4"
