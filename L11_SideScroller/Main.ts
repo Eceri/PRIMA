@@ -1,29 +1,59 @@
-namespace L11_NEW {
-  import f = FudgeCore;
+namespace L11_SideScroller {
+  export import f = FudgeCore;
+
   window.addEventListener("load", handleLoad);
-  export let viewport: f.Viewport = new f.Viewport();
-  const cameraDistance: number = 50;
+  let viewport: f.Viewport = new f.Viewport();
+  const cameraDistance: number = 10;
 
   function handleLoad(_event: Event): void {
     const canvas: HTMLCanvasElement = document.querySelector("canvas");
-    let camera:f.ComponentCamera = new f.ComponentCamera()
-    camera.pivot.translateZ(cameraDistance)
-    let playerNode: f.Node = new f.Node("player")
+    let camera: f.ComponentCamera = new f.ComponentCamera();
+    camera.backgroundColor = f.Color.CSS("lightpink");
+    camera.pivot.translateZ(cameraDistance);
+    camera.pivot.lookAt(f.Vector3.ZERO());
 
-    
-    let mesh: f.MeshQuad = new f.MeshQuad();
-    let playerCmpMesh: f.ComponentMesh = new f.ComponentMesh(mesh);
-    let mtrSolidWhite: f.Material = new f.Material("SolidWhite", f.ShaderUniColor, new f.CoatColored(new f.Color(1, 1, 1, 1)));
-    let cmpMaterial: f.ComponentMaterial = new f.ComponentMaterial(mtrSolidWhite);
-    playerNode.addComponent(playerCmpMesh)
-    playerNode.addComponent(cmpMaterial)
-    
-    let levelNode: f.Node = new f.Node("level")
-    levelNode.appendChild(playerNode);
-    
-    f.RenderManager.initialize();
-    viewport.initialize("Viewport", playerNode, camera, canvas);
-    f.Debug.log(viewport);
+    let renderContext2D: CanvasRenderingContext2D = canvas.getContext("2d");
+
+    let playerSpritesheet: HTMLImageElement = document.querySelector("img");
+    let playerTexture: f.TextureImage = new f.TextureImage();
+    playerTexture.image = playerSpritesheet;
+    let playerSprite: Sprite = new Sprite("player");
+    playerSprite.generateByGrid(
+      playerTexture,
+      f.Rectangle.GET(2, 102, 68, 64),
+      6,
+      f.Vector2.ZERO(),
+      64,
+      f.ORIGIN2D.BOTTOMCENTER
+    );
+
+    let player: NodeSprite = new NodeSprite("player", playerSprite);
+    player.setFrameDirection(1);
+    player.addComponent(new f.ComponentTransform());
+    player.addEventListener(
+      "showNext",
+      (event: Event) => { (<NodeSprite>event.currentTarget).showFrameNext();},
+      true);
+
+    let game: f.Node = new f.Node("Game");
+    game.appendChild(player);
+
+    // f.Debug.log(viewport);
+    f.RenderManager.initialize(true, false);
+    viewport.initialize("Viewport", game, camera, canvas);
     viewport.draw();
+
+    f.Loop.addEventListener(f.EVENT.LOOP_FRAME, update);
+    f.Loop.start(f.LOOP_MODE.TIME_GAME, 10);
+
+    function update(){
+      game.broadcastEvent(new CustomEvent("showNext"));
+
+      viewport.draw()
+
+      
+      renderContext2D.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
+      renderContext2D.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+    }
   }
 }

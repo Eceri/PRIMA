@@ -1,4 +1,3 @@
-declare namespace L11_NEW {
-    import f = FudgeCore;
-    let viewport: f.Viewport;
+declare namespace L11_SideScroller {
+    export import f = FudgeCore;
 }
