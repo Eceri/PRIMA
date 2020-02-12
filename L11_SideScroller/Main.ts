@@ -4,6 +4,8 @@ namespace L11_SideScroller {
   window.addEventListener("load", handleLoad);
   let viewport: f.Viewport = new f.Viewport();
   const cameraDistance: number = 10;
+  const maxPlayerSpeed: number = .15;
+  let playerSpeed: number = 0;
 
   function handleLoad(_event: Event): void {
     const canvas: HTMLCanvasElement = document.querySelector("canvas");
@@ -34,26 +36,51 @@ namespace L11_SideScroller {
       "showNext",
       (event: Event) => { (<NodeSprite>event.currentTarget).showFrameNext();},
       true);
-
     let game: f.Node = new f.Node("Game");
     game.appendChild(player);
 
     // f.Debug.log(viewport);
+    window.addEventListener("keydown", hndKeyDown)
+    window.addEventListener("keyup", hndKeyUp)
+    
     f.RenderManager.initialize(true, false);
     viewport.initialize("Viewport", game, camera, canvas);
     viewport.draw();
-
+    
     f.Loop.addEventListener(f.EVENT.LOOP_FRAME, update);
-    f.Loop.start(f.LOOP_MODE.TIME_GAME, 10);
+    f.Loop.start(f.LOOP_MODE.TIME_GAME, 15, true);
 
+    //gameloop
     function update(){
       game.broadcastEvent(new CustomEvent("showNext"));
 
       viewport.draw()
-
       
       renderContext2D.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
       renderContext2D.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+    }
+
+    //controls
+    function hndKeyDown(_event: KeyboardEvent): void {
+      switch(_event.code) {
+        case f.KEYBOARD_CODE.ARROW_LEFT:
+          if (playerSpeed < maxPlayerSpeed) playerSpeed += .05; //bad idea
+          player.cmpTransform.local.translateX(-playerSpeed);
+          console.log(playerSpeed)
+          break;
+        case f.KEYBOARD_CODE.ARROW_RIGHT:
+          player.cmpTransform.local.translateX(.1)
+          break;
+        default:
+          break;
+      }
+    }
+    function hndKeyUp(_event: KeyboardEvent): void {
+      switch(_event.code) {
+        case f.KEYBOARD_CODE.ARROW_LEFT:
+        case f.KEYBOARD_CODE.ARROW_RIGHT:
+          playerSpeed = 0;
+      }
     }
   }
 }

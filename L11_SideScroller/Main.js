@@ -5,6 +5,8 @@ var L11_SideScroller;
     window.addEventListener("load", handleLoad);
     let viewport = new L11_SideScroller.f.Viewport();
     const cameraDistance = 10;
+    const maxPlayerSpeed = .15;
+    let playerSpeed = 0;
     function handleLoad(_event) {
         const canvas = document.querySelector("canvas");
         let camera = new L11_SideScroller.f.ComponentCamera();
@@ -24,16 +26,42 @@ var L11_SideScroller;
         let game = new L11_SideScroller.f.Node("Game");
         game.appendChild(player);
         // f.Debug.log(viewport);
+        window.addEventListener("keydown", hndKeyDown);
+        window.addEventListener("keyup", hndKeyUp);
         L11_SideScroller.f.RenderManager.initialize(true, false);
         viewport.initialize("Viewport", game, camera, canvas);
         viewport.draw();
         L11_SideScroller.f.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
-        L11_SideScroller.f.Loop.start(L11_SideScroller.f.LOOP_MODE.TIME_GAME, 10);
+        L11_SideScroller.f.Loop.start(L11_SideScroller.f.LOOP_MODE.TIME_GAME, 15, true);
+        //gameloop
         function update() {
             game.broadcastEvent(new CustomEvent("showNext"));
             viewport.draw();
             renderContext2D.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
             renderContext2D.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+        }
+        //controls
+        function hndKeyDown(_event) {
+            switch (_event.code) {
+                case L11_SideScroller.f.KEYBOARD_CODE.ARROW_LEFT:
+                    if (playerSpeed < maxPlayerSpeed)
+                        playerSpeed += .05; //bad idea
+                    player.cmpTransform.local.translateX(-playerSpeed);
+                    console.log(playerSpeed);
+                    break;
+                case L11_SideScroller.f.KEYBOARD_CODE.ARROW_RIGHT:
+                    player.cmpTransform.local.translateX(.1);
+                    break;
+                default:
+                    break;
+            }
+        }
+        function hndKeyUp(_event) {
+            switch (_event.code) {
+                case L11_SideScroller.f.KEYBOARD_CODE.ARROW_LEFT:
+                case L11_SideScroller.f.KEYBOARD_CODE.ARROW_RIGHT:
+                    playerSpeed = 0;
+            }
         }
     }
 })(L11_SideScroller || (L11_SideScroller = {}));

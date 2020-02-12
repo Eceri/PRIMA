@@ -286,7 +286,7 @@
         "signature": "f936aa382d202232245c0ac5da48d905e40c63db12f93894a892e058e1669bb7"
       },
       "./l11_sidescroller/main.ts": {
-        "version": "f98e84f61871ad5d03860ecacb14010480607767797cd537bc9877afa9e92efc",
+        "version": "eb119c9a2819dc4ab4e504492247a2428c16415e8ba9cb13441618fb99855223",
         "signature": "d91d94918f5c4420aa26371d9dc9fdff9784733faa7cec2e9baccb8176195629"
       },
       "./l11_sidescroller/spritegenerator.ts": {
