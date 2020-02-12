@@ -1,4 +1,5 @@
 declare namespace L11_SideScroller {
+    import f = FudgeCore;
     class SpriteFrame {
         rectTexture: f.Rectangle;
         pivot: f.Matrix4x4;

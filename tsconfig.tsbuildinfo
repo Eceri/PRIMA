@@ -2,8 +2,8 @@
   "program": {
     "fileInfos": {
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es5.d.ts": {
-        "version": "fc43680ad3a1a4ec8c7b8d908af1ec9ddff87845346de5f02c735c9171fa98ea",
-        "signature": "fc43680ad3a1a4ec8c7b8d908af1ec9ddff87845346de5f02c735c9171fa98ea"
+        "version": "ff5688d6b2fcfef06842a395d7ff4d5730d45b724d4c48913118c889829052a1",
+        "signature": "ff5688d6b2fcfef06842a395d7ff4d5730d45b724d4c48913118c889829052a1"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2015.d.ts": {
         "version": "7994d44005046d1413ea31d046577cdda33b8b2470f30281fd9c8b3c99fe2d96",
@@ -25,21 +25,17 @@
         "version": "0fc0f68d3f4d94aa65fab955592e4a9f2066e6f8ee2f66fcc45adf4037fc167b",
         "signature": "0fc0f68d3f4d94aa65fab955592e4a9f2066e6f8ee2f66fcc45adf4037fc167b"
       },
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.d.ts": {
-        "version": "2ac4bcb126505649675d586f7c186a5278a8ef3f0dad29475c512e56c007a0c5",
-        "signature": "2ac4bcb126505649675d586f7c186a5278a8ef3f0dad29475c512e56c007a0c5"
-      },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.d.ts": {
-        "version": "f135d77dd841d9a94e2551421f71067060f9eb1f0fb3b45ef142f78e84768bc8",
-        "signature": "f135d77dd841d9a94e2551421f71067060f9eb1f0fb3b45ef142f78e84768bc8"
+        "version": "1c05c805f62c1c06a60b7812cd8de2dff7a5bda2218ce5edda5d9d298b1c48e1",
+        "signature": "1c05c805f62c1c06a60b7812cd8de2dff7a5bda2218ce5edda5d9d298b1c48e1"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.d.ts": {
-        "version": "d93de5e8a7275cb9d47481410e13b3b1debb997e216490954b5d106e37e086de",
-        "signature": "d93de5e8a7275cb9d47481410e13b3b1debb997e216490954b5d106e37e086de"
+        "version": "2d53f3741e5a4f78a90f623387d71a1cc809bb258f10cdaec034b67cbf71022f",
+        "signature": "2d53f3741e5a4f78a90f623387d71a1cc809bb258f10cdaec034b67cbf71022f"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.iterable.d.ts": {
-        "version": "8329c3401aa8708426c7760f14219170f69a2cb77e4519758cec6f5027270faf",
-        "signature": "8329c3401aa8708426c7760f14219170f69a2cb77e4519758cec6f5027270faf"
+        "version": "f42b5c6ad71e2229f1fea2065bc28b887344bc7e7acd9d87e2e53d6376736890",
+        "signature": "f42b5c6ad71e2229f1fea2065bc28b887344bc7e7acd9d87e2e53d6376736890"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.webworker.importscripts.d.ts": {
         "version": "fe4e59403e34c7ff747abe4ff6abbc7718229556d7c1a5b93473fb53156c913b",
@@ -50,12 +46,12 @@
         "signature": "b9faa17292f17d2ad75e34fac77dd63a6403af1dba02d39cd0cbb9ffdf3de8b9"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2015.core.d.ts": {
-        "version": "734ddc145e147fbcd55f07d034f50ccff1086f5a880107665ec326fb368876f6",
-        "signature": "734ddc145e147fbcd55f07d034f50ccff1086f5a880107665ec326fb368876f6"
+        "version": "4ab19088d508f9e62bfc61c157e8a65b2afaefa251ecca315e7d20b5b97b256f",
+        "signature": "4ab19088d508f9e62bfc61c157e8a65b2afaefa251ecca315e7d20b5b97b256f"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2015.collection.d.ts": {
-        "version": "4a0862a21f4700de873db3b916f70e41570e2f558da77d2087c9490f5a0615d8",
-        "signature": "4a0862a21f4700de873db3b916f70e41570e2f558da77d2087c9490f5a0615d8"
+        "version": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0",
+        "signature": "dd94d8ef48c562389eb58af8df3a3a34d11367f7c818192aa5f16470d469e3f0"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2015.generator.d.ts": {
         "version": "765e0e9c9d74cf4d031ca8b0bdb269a853e7d81eda6354c8510218d03db12122",
@@ -66,8 +62,8 @@
         "signature": "285958e7699f1babd76d595830207f18d719662a0c30fac7baca7df7162a9210"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2015.promise.d.ts": {
-        "version": "d4deaafbb18680e3143e8b471acd650ed6f72a408a33137f0a0dd104fbe7f8ca",
-        "signature": "d4deaafbb18680e3143e8b471acd650ed6f72a408a33137f0a0dd104fbe7f8ca"
+        "version": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2",
+        "signature": "e6b8ff2798f8ebd7a1c7afd8671f2cb67ee1901c422f5964d74b0b34c6574ea2"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2015.proxy.d.ts": {
         "version": "5e72f949a89717db444e3bd9433468890068bb21a5638d8ab15a1359e05e54fe",
@@ -90,8 +86,8 @@
         "signature": "3f96f1e570aedbd97bf818c246727151e873125d0512e4ae904330286c721bc0"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2017.object.d.ts": {
-        "version": "c2d60b2e558d44384e4704b00e6b3d154334721a911f094d3133c35f0917b408",
-        "signature": "c2d60b2e558d44384e4704b00e6b3d154334721a911f094d3133c35f0917b408"
+        "version": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4",
+        "signature": "ff8ad203e83338289b0f5defc1a5b5c253fb7d251b464db497383f915a0df3f4"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2017.sharedmemory.d.ts": {
         "version": "b8667586a618c5cf64523d4e500ae39e781428abfb28f3de441fc66b56144b6f",
@@ -110,16 +106,16 @@
         "signature": "28569d59e07d4378cb3d54979c4c60f9f06305c9bb6999ffe6cab758957adc46"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2018.asyncgenerator.d.ts": {
-        "version": "2958de3d25bfb0b5cdace0244e11c9637e5988920b99024db705a720ce6348e7",
-        "signature": "2958de3d25bfb0b5cdace0244e11c9637e5988920b99024db705a720ce6348e7"
+        "version": "93c0c9ae60e46e4d1389dd33936bbfa24d9c66ef83a1569fcbb67a46432405e0",
+        "signature": "93c0c9ae60e46e4d1389dd33936bbfa24d9c66ef83a1569fcbb67a46432405e0"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2018.asynciterable.d.ts": {
-        "version": "85085a0783532dc04b66894748dc4a49983b2fbccb0679b81356947021d7a215",
-        "signature": "85085a0783532dc04b66894748dc4a49983b2fbccb0679b81356947021d7a215"
+        "version": "16c06e535d8e03be7c35735f9ce92c9e591cfea50cdcd0ac1353a0b85c60ab10",
+        "signature": "16c06e535d8e03be7c35735f9ce92c9e591cfea50cdcd0ac1353a0b85c60ab10"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2018.intl.d.ts": {
-        "version": "5494f46d3a8a0329d13ddc37f8759d5288760febb51c92336608d1c06bb18d29",
-        "signature": "5494f46d3a8a0329d13ddc37f8759d5288760febb51c92336608d1c06bb18d29"
+        "version": "1b820b57379c726f94af50cd60053674af53ff9d079c1563cc70071e8b757dd0",
+        "signature": "1b820b57379c726f94af50cd60053674af53ff9d079c1563cc70071e8b757dd0"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2018.promise.d.ts": {
         "version": "efe049114bad1035b0aa9a4a0359f50ab776e3897c411521e51d3013079cbd62",
@@ -130,44 +126,36 @@
         "signature": "e7780d04cd4120ee554c665829db2bbdd6b947cbaa3c150b7d9ea74df3beb2e8"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.array.d.ts": {
-        "version": "7054111c49ea06f0f2e623eab292a9c1ae9b7d04854bd546b78f2b8b57e13d13",
-        "signature": "7054111c49ea06f0f2e623eab292a9c1ae9b7d04854bd546b78f2b8b57e13d13"
+        "version": "fc7c02b980e7dda0ed14d57ee71705c09efc51ec6286a10b971a25a3bb29262b",
+        "signature": "fc7c02b980e7dda0ed14d57ee71705c09efc51ec6286a10b971a25a3bb29262b"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.object.d.ts": {
         "version": "989b95205f1189943fab0ce12a39c80570edf8f200aca60e0fdc500afc4d5859",
         "signature": "989b95205f1189943fab0ce12a39c80570edf8f200aca60e0fdc500afc4d5859"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.string.d.ts": {
-        "version": "e9bfd234b801c955459cde7109bebf6fd1b4814fd8b394942f5ba746828a6486",
-        "signature": "e9bfd234b801c955459cde7109bebf6fd1b4814fd8b394942f5ba746828a6486"
+        "version": "9a13dd96b56e11eb3b170b9dbdb2e6b323b0023e9a0a275554f1116c1a0b2658",
+        "signature": "9a13dd96b56e11eb3b170b9dbdb2e6b323b0023e9a0a275554f1116c1a0b2658"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.symbol.d.ts": {
-        "version": "53d5859b8aaefd27aa3242d36fc17a9243335d04ec14664b52314e7d9eb04de6",
-        "signature": "53d5859b8aaefd27aa3242d36fc17a9243335d04ec14664b52314e7d9eb04de6"
-      },
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.string.d.ts": {
-        "version": "01f1170ac78a31964a8a05cc46df7dc63d6911f683cb49586b27c49f54187a86",
-        "signature": "01f1170ac78a31964a8a05cc46df7dc63d6911f683cb49586b27c49f54187a86"
-      },
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts": {
-        "version": "1debec13dc47b66e7e5a5ceb3872ea7f141613148f6083ef6dc38626ee8c9a93",
-        "signature": "1debec13dc47b66e7e5a5ceb3872ea7f141613148f6083ef6dc38626ee8c9a93"
+        "version": "7a842c21e0fe143eb3ad4d689a1470bab5ed9bc7fd7223fe8b56cbae27038d62",
+        "signature": "7a842c21e0fe143eb3ad4d689a1470bab5ed9bc7fd7223fe8b56cbae27038d62"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.intl.d.ts": {
-        "version": "1377923021927244ea19433873b997ad8585533b0a56d5de29cda497f7842756",
-        "signature": "1377923021927244ea19433873b997ad8585533b0a56d5de29cda497f7842756"
+        "version": "f6e0c89daaf72eac38dfb1d5ef0972183f7f26a68da15bfe5bcb7cfccf0c7db8",
+        "signature": "f6e0c89daaf72eac38dfb1d5ef0972183f7f26a68da15bfe5bcb7cfccf0c7db8"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.bigint.d.ts": {
-        "version": "0c9ea8c2028047f39a3f66752682604f543c08be8806258c3d95c93e75a43255",
-        "signature": "0c9ea8c2028047f39a3f66752682604f543c08be8806258c3d95c93e75a43255"
+        "version": "63b66918290d794f73832a6d0325be5026236674fe8c0cb0b68d162000d7bbe8",
+        "signature": "63b66918290d794f73832a6d0325be5026236674fe8c0cb0b68d162000d7bbe8"
       },
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.full.d.ts": {
         "version": "b209a815904a485328677714ef8c4ddd2dcf4040154fa204d25cbf31cd4ff0f3",
         "signature": "b209a815904a485328677714ef8c4ddd2dcf4040154fa204d25cbf31cd4ff0f3"
       },
       "./fudge/fudgecore.d.ts": {
-        "version": "b7957bba13ad04eae6fd27307d84f9decd4a16c213b1962f2c561df0a8b08fd1",
-        "signature": "b7957bba13ad04eae6fd27307d84f9decd4a16c213b1962f2c561df0a8b08fd1"
+        "version": "0904e843cf6ded51f0533d0780c48aa61825feeca87144a6eaba23b8f6731000",
+        "signature": "0904e843cf6ded51f0533d0780c48aa61825feeca87144a6eaba23b8f6731000"
       },
       "./l02_first_fudge/main.ts": {
         "version": "565dc0228b7b989676a2e297dc16cc70f476e725c05ab39a5af982ceebc2ec94",
@@ -227,7 +215,7 @@
       },
       "./l09_fudgecraft_camera/cameracontrol.ts": {
         "version": "fcfab1f55dbdde9d011bbed04b53f91db5f9a612119cfcc24415bbd8cf49ba5b",
-        "signature": "ed1d9a1a355657e31bade6a811183c8ccdf1370e7b11198d3ca4d843f8e2ee95"
+        "signature": "ad39d3ca8badea42b5640ab742548badf9e7b6a594d2ae164046a90cb3e9d4e9"
       },
       "./l09_fudgecraft_camera/control.ts": {
         "version": "e4b210f0b886d0c23aecf14a4550c8125fdd0140fa05368ba0ff80543dd7a941",
@@ -255,7 +243,7 @@
       },
       "./l10_fudgecraft_combos/cameracontrol.ts": {
         "version": "bb2f7a6c2172056a1c3b3c5b3910d45db93c8b6ce04ac871fc32fadfa0e86856",
-        "signature": "2fd5ec7fe47aaa1db7a324552ab9503102a1015bb5846854a5813c6f20768c41"
+        "signature": "f4648598ab60557c29be02e2ca3663f702444e5e0bef1b902100d21be8b22da4"
       },
       "./l10_fudgecraft_combos/combos.ts": {
         "version": "93c7cdbb20310e993ffc6f7a0e5af55ff0808ae85d2592964043cad50d5ef729",
@@ -285,13 +273,21 @@
         "version": "ebb02d9c3d77b1403393e7a4fca78b9ebbbc8e59bf339499f01d46eeb075ff9b",
         "signature": "f936aa382d202232245c0ac5da48d905e40c63db12f93894a892e058e1669bb7"
       },
+      "./l11_sidescroller/character.ts": {
+        "version": "59b5e797c066530d9686018398116dd11f8e3a738f87b9442947d4b8f36d5814",
+        "signature": "0e7e5e522ac2d0022467c01497d832c9534a166d9b78516f781a4e998fcd58f6"
+      },
+      "./l11_sidescroller/floor.ts": {
+        "version": "58aff2b74bbee37512a851bd7f27e457551c253ef4a0a91e49cd3de15b8bee91",
+        "signature": "572e99ebc6119dc2778e9a48be6ab9dfa728b68b9d4512508deb00f43742c52e"
+      },
       "./l11_sidescroller/main.ts": {
-        "version": "eb119c9a2819dc4ab4e504492247a2428c16415e8ba9cb13441618fb99855223",
-        "signature": "d91d94918f5c4420aa26371d9dc9fdff9784733faa7cec2e9baccb8176195629"
+        "version": "6c0663c001434b13284adea40339cfa5c41de332ea4cf42e9ff46690bead7d45",
+        "signature": "eeb7149dcf99a22d9ea8c5d45cf9f343d2a3fb425137a16d9e0b56bf5ab77584"
       },
       "./l11_sidescroller/spritegenerator.ts": {
-        "version": "e79670f5e17d305b33e17692490dd8274dd65ab8e0acb1550f1ce65892b03fcb",
-        "signature": "65ce4aa4d433386b5e9bee2654ec2f58db7c8983997a5e9133c8c52d250a16ea"
+        "version": "a2c2ced9b350d482636700d3fe6c9c298bbb94ae89db2caf7ed5bfa20632331f",
+        "signature": "ac35d066c978d1248098b01aae23d225dbc76011c69f0910a0349ab845dfafbc"
       },
       "./pong/fudge/fudgecore.d.ts": {
         "version": "1769f56f1aa6dd715b42276abfb1f477714049320e7fe9b4e81e69395a17dff1",
@@ -529,10 +525,6 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
@@ -646,14 +638,6 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.symbol.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.string.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -786,6 +770,14 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./l10_fudgecraft_combos/test.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l11_sidescroller/character.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l11_sidescroller/floor.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1108,10 +1100,6 @@
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
@@ -1225,14 +1213,6 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.symbol.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.string.d.ts": [
-        "./node_modules/@types/node/util.d.ts",
-        "./node_modules/@types/node/ts3.2/util.d.ts"
-      ],
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1545,7 +1525,6 @@
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2017.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2018.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.d.ts",
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.dom.iterable.d.ts",
@@ -1575,8 +1554,6 @@
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.object.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.string.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2019.symbol.d.ts",
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.string.d.ts",
-      "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.es2020.symbol.wellknown.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.full.d.ts",
@@ -1610,6 +1587,9 @@
       "./l10_fudgecraft_combos/grid.ts",
       "./l10_fudgecraft_combos/main.ts",
       "./l10_fudgecraft_combos/test.ts",
+      "./l11_sidescroller/character.ts",
+      "./l11_sidescroller/floor.ts",
+      "./l11_sidescroller/main.ts",
       "./l11_sidescroller/spritegenerator.ts",
       "./pong/fudge/fudgecore.d.ts",
       "./node_modules/@types/node/globals.d.ts",
@@ -1657,9 +1637,8 @@
       "./node_modules/@types/node/ts3.2/globals.d.ts",
       "./node_modules/@types/node/ts3.2/index.d.ts",
       "./node_modules/@types/webgl2/index.d.ts",
-      "./node_modules/@types/ws/index.d.ts",
-      "./l11_sidescroller/main.ts"
+      "./node_modules/@types/ws/index.d.ts"
     ]
   },
-  "version": "3.7.2"
+  "version": "3.6.4"
 }

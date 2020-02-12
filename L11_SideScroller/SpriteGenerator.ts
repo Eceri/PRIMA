@@ -1,4 +1,5 @@
 namespace L11_SideScroller {
+  import f = FudgeCore;
 
   export class SpriteFrame {
     rectTexture: f.Rectangle;
@@ -38,9 +39,9 @@ namespace L11_SideScroller {
         frame.timeScale = 1;
         this.frames.push(frame);
 
-        // ƒ.Debug.log(frame.rectTexture.toString());
-        // ƒ.Debug.log(frame.pivot.toString());
-        // ƒ.Debug.log(frame.material);
+        // f.Debug.log(frame.rectTexture.toString());
+        // f.Debug.log(frame.pivot.toString());
+        // f.Debug.log(frame.material);
 
         count++;
       }
@@ -78,7 +79,7 @@ namespace L11_SideScroller {
       frame.pivot.translate(new f.Vector3(rectQuad.position.x + rectQuad.size.x / 2, -rectQuad.position.y - rectQuad.size.y / 2, 0));
       frame.pivot.scaleX(rectQuad.size.x);
       frame.pivot.scaleY(rectQuad.size.y);
-      // ƒ.Debug.log(rectQuad.toString());
+      // f.Debug.log(rectQuad.toString());
 
       let coat: f.CoatTextured = new f.CoatTextured();
       coat.pivot.translate(frame.rectTexture.position);
@@ -87,7 +88,7 @@ namespace L11_SideScroller {
       coat.texture = _texture;
 
       frame.material = new f.Material(_name, f.ShaderTexture, coat);
-      // ƒ.Debug.log(coat.pivot.toString());  
+      // f.Debug.log(coat.pivot.toString());  
 
       return frame;
     }
