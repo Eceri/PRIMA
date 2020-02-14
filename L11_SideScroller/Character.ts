@@ -16,7 +16,7 @@ namespace L11_SideScroller {
 
   export class Character extends f.Node {
     private static sprites: Sprite[];
-    private static speedMax: f.Vector2 = new f.Vector2(1.5, 5); // units per second
+    private static speedMax: f.Vector2 = new f.Vector2(1.5, 10); // units per second
     private static gravity: f.Vector2 = f.Vector2.Y(-5);
     // private action: ACTION;
     // private time: ƒ.Time = new ƒ.Time();
@@ -126,6 +126,7 @@ namespace L11_SideScroller {
             child.cmpTransform.local.rotation = f.Vector3.Y(
               90 - 90 * direction
             );
+
           // this.cmpTransform.local.rotation = f.Vector3.Y(90 - 90 * direction);
           break;
         case ACTION.LAUNCH:
@@ -144,6 +145,7 @@ namespace L11_SideScroller {
       this.cmpTransform.local.translate(distance);
       this.checkCollision();
     };
+
     private checkCollision(): void {
       for (let floor of level.getChildren()) {
         f.RenderManager.update();
@@ -158,30 +160,27 @@ namespace L11_SideScroller {
 
           let distanceX: number, distanceY: number;
           //calculate distance , accomodation for scalin to get proper distances
-          let rectPos = rectFloor.position
-          distanceX =
-            (rectPlayer.x - rectPos.x) / floor.cmpTransform.local.scaling.x;
-          distanceY =
-            (rectPlayer.y - rectPos.y) / floor.cmpTransform.local.scaling.y;
+          let rectPos = rectFloor.position;
+          distanceX = (rectPlayer.x - rectPos.x) / rectFloor.width;
+          distanceY = (rectPlayer.y - rectPos.y) / rectFloor.height;
 
-            console.log("top:" + rectFloor.top + " right: " + rectFloor.right + " bottom: " + rectFloor.bottom + " left: " + rectFloor.left +  " pos: " + rectFloor.position.toString())
-
-          //when the absolute distance of y > then the distance of x, its a y Collision 
-          if (distanceY * distanceY > distanceX * distanceX) {
-            if (distanceY > 0) {
+          //when the absolute distance of y > then the distance of x, its a y Collision
+          if (distanceY * distanceY >= distanceX * distanceX) {
+            if (distanceY < 0) {
               translation.y = rectFloor.bottom;
               this.grounded = true;
-            } else translation.y = rectFloor.top - 1.25;
-            this.speed.y = 0;
-          } else {
-            if (distanceX > 0) {
-              console.log("x Collision:  distance: X " + distanceX + "  y "+  distanceY);
-              translation.x = rectFloor.left; //+ (rectPlayer.width / 2);
+              this.speed.y = 0;
             } else {
-              translation.x = rectFloor.right; //- (rectPlayer.width / 2);
-              console.log("Push to right")
+              translation.y = rectFloor.top + rectPlayer.height;
+              if(this.speed.y > 0) this.speed.y = 0
             }
-              this.speed.x = 0;
+          } else {
+            if (distanceX >= 0) {
+              translation.x = rectFloor.right + rectPlayer.width / 2;
+            } else {
+              translation.x = rectFloor.left - rectPlayer.width / 2;
+            }
+            this.speed.x = 0;
           }
           if ((<Floor>floor).moving) {
             (<MovingFloor>floor).applyTranslation(translation);

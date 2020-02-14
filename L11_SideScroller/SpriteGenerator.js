@@ -104,10 +104,11 @@ var L11_SideScroller;
             this.direction = Math.floor(_direction);
         }
         getRectWorld() {
-            let rect = f.Rectangle.GET(0, 0, 60, 100, f.ORIGIN2D.CENTER);
+            let rect = f.Rectangle.GET(0, 0, 60, 100);
             let topleft = new f.Vector3(-0.5, 0.5, 0);
             let bottomright = new f.Vector3(0.5, -0.5, 0);
             let mtxResult = f.Matrix4x4.MULTIPLICATION(this.mtxWorld, this.cmpMesh.pivot);
+            mtxResult.rotation = f.Vector3.ZERO(); // fix rotation problem in Collision
             topleft.transform(mtxResult, true);
             bottomright.transform(mtxResult, true);
             let size = new f.Vector2(bottomright.x - topleft.x, bottomright.y - topleft.y);

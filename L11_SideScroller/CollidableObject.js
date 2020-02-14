@@ -6,7 +6,7 @@ var L11_SideScroller;
             super(_name);
         }
         getRectWorld() {
-            let rect = L11_SideScroller.f.Rectangle.GET(0, 0, 100, 100, L11_SideScroller.f.ORIGIN2D.TOPRIGHT);
+            let rect = L11_SideScroller.f.Rectangle.GET(0, 0, 100, 100, L11_SideScroller.f.ORIGIN2D.CENTER);
             let topleft = new L11_SideScroller.f.Vector3(-0.5, 0.5, 0);
             let bottomright = new L11_SideScroller.f.Vector3(0.5, -0.5, 0);
             let mtxResult = this.mtxWorld;

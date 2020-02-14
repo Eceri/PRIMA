@@ -79,7 +79,7 @@ namespace L11_SideScroller {
         direction = DIRECTION.RIGHT
       }
       player.act(action, direction);
-      if (keysPressed[f.KEYBOARD_CODE.W] && player.speed.y == 0) {
+      if (keysPressed[f.KEYBOARD_CODE.W] && player.grounded) {
         player.act(ACTION.LAUNCH) //should be jump squat
       }
       // console.log(player.speed.y)
@@ -105,12 +105,12 @@ namespace L11_SideScroller {
     floor.cmpTransform.local.translateY(3);
     level.appendChild(floor);
 
-    // floor = new Floor();
-    // floor.cmpTransform.local.scaleY(1);
-    // floor.cmpTransform.local.scaleX(.5);
-    // floor.cmpTransform.local.translateX(2);
-    // floor.cmpTransform.local.translateY(1);
-    // level.appendChild(floor)
+    floor = new Floor();
+    floor.cmpTransform.local.scaleY(1);
+    floor.cmpTransform.local.scaleX(.5);
+    floor.cmpTransform.local.translateX(2);
+    floor.cmpTransform.local.translateY(1);
+    level.appendChild(floor)
 
     let movingFloor: MovingFloor = new MovingFloor(new f.Vector3(2, 1.5));
     // movingFloor.cmpTransform.local.scaleY(.2);

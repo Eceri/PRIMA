@@ -173,20 +173,18 @@ namespace L11_SideScroller {
         this.sprite.frames.length;
       this.showFrame(this.frameCurrent);
     }
-
     public setFrameDirection(_direction: number): void {
       this.direction = Math.floor(_direction);
     }
-
     public getRectWorld(): f.Rectangle {
-      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 60, 100, f.ORIGIN2D.CENTER);
+      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 60, 100);
       let topleft: f.Vector3 = new f.Vector3(-0.5, 0.5, 0);
       let bottomright: f.Vector3 = new f.Vector3(0.5, -0.5, 0);
-
       let mtxResult: f.Matrix4x4 = f.Matrix4x4.MULTIPLICATION(
         this.mtxWorld,
         this.cmpMesh.pivot
       );
+      mtxResult.rotation = f.Vector3.ZERO(); // fix rotation problem in Collision
       topleft.transform(mtxResult, true);
       bottomright.transform(mtxResult, true);
 
@@ -196,7 +194,6 @@ namespace L11_SideScroller {
       );
       rect.position = topleft.toVector2();
       rect.size = size;
-
       return rect;
     }
   }

@@ -101,29 +101,27 @@ var L11_SideScroller;
                     let distanceX, distanceY;
                     //calculate distance , accomodation for scalin to get proper distances
                     let rectPos = rectFloor.position;
-                    distanceX =
-                        (rectPlayer.x - rectPos.x) / floor.cmpTransform.local.scaling.x;
-                    distanceY =
-                        (rectPlayer.y - rectPos.y) / floor.cmpTransform.local.scaling.y;
-                    console.log("top:" + rectFloor.top + " right: " + rectFloor.right + " bottom: " + rectFloor.bottom + " left: " + rectFloor.left + " pos: " + rectFloor.position.toString());
-                    //when the absolute distance of y > then the distance of x, its a y Collision 
-                    if (distanceY * distanceY > distanceX * distanceX) {
-                        if (distanceY > 0) {
+                    distanceX = (rectPlayer.x - rectPos.x) / rectFloor.width;
+                    distanceY = (rectPlayer.y - rectPos.y) / rectFloor.height;
+                    //when the absolute distance of y > then the distance of x, its a y Collision
+                    if (distanceY * distanceY >= distanceX * distanceX) {
+                        if (distanceY < 0) {
                             translation.y = rectFloor.bottom;
                             this.grounded = true;
-                        }
-                        else
-                            translation.y = rectFloor.top - 1.25;
-                        this.speed.y = 0;
-                    }
-                    else {
-                        if (distanceX > 0) {
-                            console.log("x Collision:  distance: X " + distanceX + "  y " + distanceY);
-                            translation.x = rectFloor.left; //+ (rectPlayer.width / 2);
+                            this.speed.y = 0;
                         }
                         else {
-                            translation.x = rectFloor.right; //- (rectPlayer.width / 2);
-                            console.log("Push to right");
+                            translation.y = rectFloor.top + rectPlayer.height;
+                            if (this.speed.y > 0)
+                                this.speed.y = 0;
+                        }
+                    }
+                    else {
+                        if (distanceX >= 0) {
+                            translation.x = rectFloor.right + rectPlayer.width / 2;
+                        }
+                        else {
+                            translation.x = rectFloor.left - rectPlayer.width / 2;
                         }
                         this.speed.x = 0;
                     }
@@ -136,7 +134,7 @@ var L11_SideScroller;
             }
         }
     }
-    Character.speedMax = new f.Vector2(1.5, 5); // units per second
+    Character.speedMax = new f.Vector2(1.5, 10); // units per second
     Character.gravity = f.Vector2.Y(-5);
     L11_SideScroller.Character = Character;
 })(L11_SideScroller || (L11_SideScroller = {}));
