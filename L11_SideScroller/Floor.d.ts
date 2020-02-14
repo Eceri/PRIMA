@@ -1,10 +1,21 @@
 declare namespace L11_SideScroller {
     import f = FudgeCore;
-    class Floor extends f.Node {
-        private static mesh;
+    class Floor extends CollidableObject {
+        protected static mesh: f.MeshSprite;
         private static material;
-        private static readonly pivot;
-        constructor();
-        getRectWorld(): f.Rectangle;
+        constructor(_name?: string);
+        get moving(): boolean;
+    }
+    class MovingFloor extends Floor {
+        private speed;
+        private originPoint;
+        private maxMoveDistance;
+        private direction;
+        constructor(_origin: f.Vector3, _moveX?: number, _moveY?: number, _direction?: number, _maxMoveDistance?: number);
+        get moving(): boolean;
+        get moveSpeed(): f.Vector3;
+        applyTranslation(_targetTranslation: f.Vector3): void;
+        private checkForReversal;
+        private update;
     }
 }

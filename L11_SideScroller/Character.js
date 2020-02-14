@@ -23,6 +23,7 @@ var L11_SideScroller;
             // private action: ACTION;
             // private time: ƒ.Time = new ƒ.Time();
             this.speed = f.Vector3.ZERO();
+            this.grounded = true;
             this.update = (_event) => {
                 this.broadcastEvent(new CustomEvent("showNext"));
                 let timeFrame = f.Loop.timeFrameGame / 1000;
@@ -35,6 +36,7 @@ var L11_SideScroller;
             for (let sprite of Character.sprites) {
                 let nodeSprite = new L11_SideScroller.NodeSprite(sprite.name, sprite);
                 nodeSprite.activate(false);
+                nodeSprite.addComponent(new f.ComponentTransform());
                 nodeSprite.addEventListener("showNext", (_event) => {
                     _event.currentTarget.showFrameNext();
                 }, true);
@@ -49,7 +51,7 @@ var L11_SideScroller;
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(2, 104, 68, 64), 6, f.Vector2.ZERO(), 64, f.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
             sprite = new L11_SideScroller.Sprite(ACTION.IDLE);
-            sprite.generateByGrid(_txtImage, f.Rectangle.GET(8, 20, 45, 80), 4, f.Vector2.ZERO(), 64, f.ORIGIN2D.BOTTOMCENTER);
+            sprite.generateByGrid(_txtImage, f.Rectangle.GET(8, 10, 45, 80), 4, f.Vector2.ZERO(), 64, f.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
             sprite = new L11_SideScroller.Sprite(ACTION.JUMP);
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(200, 180, 50, 80), 1, f.Vector2.ZERO(), 64, f.ORIGIN2D.BOTTOMCENTER);
@@ -61,60 +63,81 @@ var L11_SideScroller;
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(140, 180, 60, 80), 4, f.Vector2.ZERO(), 64, f.ORIGIN2D.BOTTOMCENTER);
         }
         show(_action) {
-            // if (_action == ACTION.JUMP)
-            //   // this.getChildrenByName()
-            //   return;
+            let currentAction = _action;
+            if (_action != ACTION.WALK && this.speed.y != 0) {
+                currentAction = ACTION.FALL;
+                this.grounded = false;
+            }
             for (let child of this.getChildren())
-                child.activate(child.name == _action);
-            // this.action = _action;
+                child.activate(child.name == currentAction);
         }
         act(_action, _direction) {
-            let currentAction = _action;
-            switch (currentAction) {
+            switch (_action) {
                 case ACTION.IDLE:
                     this.speed.x = 0;
                     break;
                 case ACTION.WALK:
                     let direction = _direction == DIRECTION.RIGHT ? 1 : -1;
-                    this.speed.x = Character.speedMax.x; // * direction;
-                    this.cmpTransform.local.rotation = f.Vector3.Y(90 - 90 * direction);
-                    // console.log(direction);
+                    this.speed.x = Character.speedMax.x * direction; // * direction;
+                    for (let child of this.getChildren())
+                        child.cmpTransform.local.rotation = f.Vector3.Y(90 - 90 * direction);
+                    // this.cmpTransform.local.rotation = f.Vector3.Y(90 - 90 * direction);
                     break;
                 case ACTION.LAUNCH:
-                    this.speed.y = 3;
+                    if (this.grounded)
+                        this.speed.y = 5;
                     break;
             }
-            if (this.speed.y > 0)
-                currentAction = ACTION.JUMP;
-            else if (this.speed.y < 0)
-                currentAction = ACTION.FALL;
-            this.show(currentAction);
+            this.show(_action);
         }
         checkCollision() {
             for (let floor of L11_SideScroller.level.getChildren()) {
+                f.RenderManager.update();
                 let rectFloor = floor.getRectWorld();
-                //console.log(rect.toString());
-                let hit = rectFloor.isInside(this.cmpTransform.local.translation.toVector2());
-                let playerTranslation = this.cmpTransform.local.translation;
-                let rectPlayer = f.Rectangle.GET(playerTranslation.x, playerTranslation.y, 0, 0, f.ORIGIN2D.BOTTOMCENTER);
-                hit = rectFloor.collides(rectPlayer);
-                console.log(rectFloor.collides(rectPlayer));
-                if (hit) {
+                let activeChild = (this.getChildren().filter(child => child.isActive)[0]);
+                let rectPlayer = activeChild.getRectWorld();
+                if (rectFloor.collides(rectPlayer)) {
                     let translation = this.cmpTransform.local.translation;
-                    let heightDifference = rectFloor.y - translation.y;
-                    if (heightDifference < .2) {
-                        translation.y = rectFloor.y;
+                    let distanceX, distanceY;
+                    //calculate distance , accomodation for scalin to get proper distances
+                    let rectPos = rectFloor.position;
+                    distanceX =
+                        (rectPlayer.x - rectPos.x) / floor.cmpTransform.local.scaling.x;
+                    distanceY =
+                        (rectPlayer.y - rectPos.y) / floor.cmpTransform.local.scaling.y;
+                    console.log("top:" + rectFloor.top + " right: " + rectFloor.right + " bottom: " + rectFloor.bottom + " left: " + rectFloor.left + " pos: " + rectFloor.position.toString());
+                    //when the absolute distance of y > then the distance of x, its a y Collision 
+                    if (distanceY * distanceY > distanceX * distanceX) {
+                        if (distanceY > 0) {
+                            translation.y = rectFloor.bottom;
+                            this.grounded = true;
+                        }
+                        else
+                            translation.y = rectFloor.top - 1.25;
                         this.speed.y = 0;
                     }
-                    else
-                        translation.x = rectFloor.x - .5;
+                    else {
+                        if (distanceX > 0) {
+                            console.log("x Collision:  distance: X " + distanceX + "  y " + distanceY);
+                            translation.x = rectFloor.left; //+ (rectPlayer.width / 2);
+                        }
+                        else {
+                            translation.x = rectFloor.right; //- (rectPlayer.width / 2);
+                            console.log("Push to right");
+                        }
+                        this.speed.x = 0;
+                    }
+                    if (floor.moving) {
+                        floor.applyTranslation(translation);
+                    }
                     this.cmpTransform.local.translation = translation;
+                    // this.checkCollision();
                 }
             }
         }
     }
     Character.speedMax = new f.Vector2(1.5, 5); // units per second
-    Character.gravity = f.Vector2.Y(-3);
+    Character.gravity = f.Vector2.Y(-5);
     L11_SideScroller.Character = Character;
 })(L11_SideScroller || (L11_SideScroller = {}));
 //# sourceMappingURL=Character.js.map

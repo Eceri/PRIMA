@@ -16,6 +16,7 @@ declare namespace L11_SideScroller {
         private static speedMax;
         private static gravity;
         speed: f.Vector3;
+        grounded: boolean;
         constructor(_name?: string);
         static generateSprites(_txtImage: f.TextureImage): void;
         show(_action: ACTION): void;

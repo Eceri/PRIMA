@@ -68,7 +68,7 @@ var L11_SideScroller;
             coat.name = _name;
             coat.texture = _texture;
             frame.material = new f.Material(_name, f.ShaderTexture, coat);
-            // f.Debug.log(coat.pivot.toString());  
+            // f.Debug.log(coat.pivot.toString());
             return frame;
         }
     }
@@ -95,11 +95,25 @@ var L11_SideScroller;
             this.frameCurrent = _index;
         }
         showFrameNext() {
-            this.frameCurrent = (this.frameCurrent + this.direction + this.sprite.frames.length) % this.sprite.frames.length;
+            this.frameCurrent =
+                (this.frameCurrent + this.direction + this.sprite.frames.length) %
+                    this.sprite.frames.length;
             this.showFrame(this.frameCurrent);
         }
         setFrameDirection(_direction) {
             this.direction = Math.floor(_direction);
+        }
+        getRectWorld() {
+            let rect = f.Rectangle.GET(0, 0, 60, 100, f.ORIGIN2D.CENTER);
+            let topleft = new f.Vector3(-0.5, 0.5, 0);
+            let bottomright = new f.Vector3(0.5, -0.5, 0);
+            let mtxResult = f.Matrix4x4.MULTIPLICATION(this.mtxWorld, this.cmpMesh.pivot);
+            topleft.transform(mtxResult, true);
+            bottomright.transform(mtxResult, true);
+            let size = new f.Vector2(bottomright.x - topleft.x, bottomright.y - topleft.y);
+            rect.position = topleft.toVector2();
+            rect.size = size;
+            return rect;
         }
     }
     L11_SideScroller.NodeSprite = NodeSprite;

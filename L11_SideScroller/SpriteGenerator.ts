@@ -28,14 +28,26 @@ namespace L11_SideScroller {
      * @param _resolutionQuad The desired number of pixels within a length of 1 of the sprite quad
      * @param _origin The location of the origin of the sprite quad
      */
-    public generate(_texture: f.TextureImage, _rects: f.Rectangle[], _resolutionQuad: number, _origin: f.ORIGIN2D): void {
+    public generate(
+      _texture: f.TextureImage,
+      _rects: f.Rectangle[],
+      _resolutionQuad: number,
+      _origin: f.ORIGIN2D
+    ): void {
       this.frames = [];
       let framing: f.FramingScaled = new f.FramingScaled();
       framing.setScale(1 / _texture.image.width, 1 / _texture.image.height);
 
       let count: number = 0;
       for (let rect of _rects) {
-        let frame: SpriteFrame = this.createFrame(this.name + `${count}`, _texture, framing, rect, _resolutionQuad, _origin);
+        let frame: SpriteFrame = this.createFrame(
+          this.name + `${count}`,
+          _texture,
+          framing,
+          rect,
+          _resolutionQuad,
+          _origin
+        );
         frame.timeScale = 1;
         this.frames.push(frame);
 
@@ -47,36 +59,68 @@ namespace L11_SideScroller {
       }
     }
 
-    public generateByGrid(_texture: f.TextureImage, _startRect: f.Rectangle, _frames: number, _borderSize: f.Vector2, _resolutionQuad: number, _origin: f.ORIGIN2D): void {
+    public generateByGrid(
+      _texture: f.TextureImage,
+      _startRect: f.Rectangle,
+      _frames: number,
+      _borderSize: f.Vector2,
+      _resolutionQuad: number,
+      _origin: f.ORIGIN2D
+    ): void {
       let rect: f.Rectangle = _startRect.copy;
       let rects: f.Rectangle[] = [];
       while (_frames--) {
         rects.push(rect.copy);
         rect.position.x += _startRect.size.x + _borderSize.x;
 
-        if (rect.right < _texture.image.width)
-          continue;
+        if (rect.right < _texture.image.width) continue;
 
         _startRect.position.y += _startRect.size.y + _borderSize.y;
         rect = _startRect.copy;
-        if (rect.bottom > _texture.image.height)
-          break;
+        if (rect.bottom > _texture.image.height) break;
       }
 
       rects.forEach((_rect: f.Rectangle) => f.Debug.log(_rect.toString()));
       this.generate(_texture, rects, _resolutionQuad, _origin);
     }
 
-    private createFrame(_name: string, _texture: f.TextureImage, _framing: f.FramingScaled, _rect: f.Rectangle, _resolutionQuad: number, _origin: f.ORIGIN2D): SpriteFrame {
-      let rectTexture: f.Rectangle = new f.Rectangle(0, 0, _texture.image.width, _texture.image.height);
+    private createFrame(
+      _name: string,
+      _texture: f.TextureImage,
+      _framing: f.FramingScaled,
+      _rect: f.Rectangle,
+      _resolutionQuad: number,
+      _origin: f.ORIGIN2D
+    ): SpriteFrame {
+      let rectTexture: f.Rectangle = new f.Rectangle(
+        0,
+        0,
+        _texture.image.width,
+        _texture.image.height
+      );
       let frame: SpriteFrame = new SpriteFrame();
 
       frame.rectTexture = _framing.getRect(_rect);
-      frame.rectTexture.position = _framing.getPoint(_rect.position, rectTexture);
+      frame.rectTexture.position = _framing.getPoint(
+        _rect.position,
+        rectTexture
+      );
 
-      let rectQuad: f.Rectangle = new f.Rectangle(0, 0, _rect.width / _resolutionQuad, _rect.height / _resolutionQuad, _origin);
+      let rectQuad: f.Rectangle = new f.Rectangle(
+        0,
+        0,
+        _rect.width / _resolutionQuad,
+        _rect.height / _resolutionQuad,
+        _origin
+      );
       frame.pivot = f.Matrix4x4.IDENTITY;
-      frame.pivot.translate(new f.Vector3(rectQuad.position.x + rectQuad.size.x / 2, -rectQuad.position.y - rectQuad.size.y / 2, 0));
+      frame.pivot.translate(
+        new f.Vector3(
+          rectQuad.position.x + rectQuad.size.x / 2,
+          -rectQuad.position.y - rectQuad.size.y / 2,
+          0
+        )
+      );
       frame.pivot.scaleX(rectQuad.size.x);
       frame.pivot.scaleY(rectQuad.size.y);
       // f.Debug.log(rectQuad.toString());
@@ -88,14 +132,14 @@ namespace L11_SideScroller {
       coat.texture = _texture;
 
       frame.material = new f.Material(_name, f.ShaderTexture, coat);
-      // f.Debug.log(coat.pivot.toString());  
+      // f.Debug.log(coat.pivot.toString());
 
       return frame;
     }
   }
 
   export class NodeSprite extends f.Node {
-    private cmpMesh: f.ComponentMesh;
+    protected cmpMesh: f.ComponentMesh;
     private cmpMaterial: f.ComponentMaterial;
     private sprite: Sprite;
     private frameCurrent: number = 0;
@@ -103,8 +147,8 @@ namespace L11_SideScroller {
 
     constructor(_name: string, _sprite: Sprite) {
       super(_name);
-      this.sprite = _sprite;
 
+      this.sprite = _sprite;
       this.cmpMesh = new f.ComponentMesh(Sprite.getMesh());
       this.cmpMaterial = new f.ComponentMaterial();
       this.addComponent(this.cmpMesh);
@@ -124,12 +168,36 @@ namespace L11_SideScroller {
     }
 
     public showFrameNext(): void {
-      this.frameCurrent = (this.frameCurrent + this.direction + this.sprite.frames.length) % this.sprite.frames.length;
+      this.frameCurrent =
+        (this.frameCurrent + this.direction + this.sprite.frames.length) %
+        this.sprite.frames.length;
       this.showFrame(this.frameCurrent);
     }
 
     public setFrameDirection(_direction: number): void {
       this.direction = Math.floor(_direction);
+    }
+
+    public getRectWorld(): f.Rectangle {
+      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 60, 100, f.ORIGIN2D.CENTER);
+      let topleft: f.Vector3 = new f.Vector3(-0.5, 0.5, 0);
+      let bottomright: f.Vector3 = new f.Vector3(0.5, -0.5, 0);
+
+      let mtxResult: f.Matrix4x4 = f.Matrix4x4.MULTIPLICATION(
+        this.mtxWorld,
+        this.cmpMesh.pivot
+      );
+      topleft.transform(mtxResult, true);
+      bottomright.transform(mtxResult, true);
+
+      let size: f.Vector2 = new f.Vector2(
+        bottomright.x - topleft.x,
+        bottomright.y - topleft.y
+      );
+      rect.position = topleft.toVector2();
+      rect.size = size;
+
+      return rect;
     }
   }
 }

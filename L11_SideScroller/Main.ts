@@ -44,14 +44,15 @@ namespace L11_SideScroller {
     viewport.draw();
 
     f.Loop.addEventListener(f.EVENT.LOOP_FRAME, update);
-    f.Loop.start(f.LOOP_MODE.TIME_GAME, 30);
+    f.Loop.start(f.LOOP_MODE.TIME_GAME, 10);
 
     //gameloop
     function update() {
       processInput();
-      camera.pivot.translateX(
-        player.mtxWorld.translation.x - camera.pivot.translation.x
-      ); // rethink, missing y movements
+      let cameraTranslation: f.Vector3 = camera.pivot.translation;
+      let playerTranslation: f.Vector3 = player.mtxWorld.translation;
+      camera.pivot.translateX(playerTranslation.x - cameraTranslation.x);
+      camera.pivot.translateY(playerTranslation.y - cameraTranslation.y);//rethink
       viewport.draw();
       renderContext2D.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
       renderContext2D.strokeRect(
@@ -80,28 +81,47 @@ namespace L11_SideScroller {
       player.act(action, direction);
       if (keysPressed[f.KEYBOARD_CODE.W] && player.speed.y == 0) {
         player.act(ACTION.LAUNCH) //should be jump squat
-      } 
+      }
+      // console.log(player.speed.y)
     }
   }
 
   function createLevel(): f.Node {
     let level: f.Node = new f.Node("Level");
     let floor: Floor = new Floor();
-    floor.cmpTransform.local.scaleY(0.2);
+    floor.cmpTransform.local.scaleY(1);
     level.appendChild(floor);
 
     floor = new Floor();
-    floor.cmpTransform.local.scaleY(0.2);
+    floor.cmpTransform.local.scaleY(1);
     floor.cmpTransform.local.scaleX(2);
     floor.cmpTransform.local.translateY(0.1);
-    floor.cmpTransform.local.translateX(1.5);
+    floor.cmpTransform.local.translateX(2);
     level.appendChild(floor);
 
     floor = new Floor();
-    floor.cmpTransform.local.scaleY(1.5);
-    floor.cmpTransform.local.translateY(2);
-    floor.cmpTransform.local.translateX(1.5);
-    level.appendChild(floor)
+    floor.cmpTransform.local.scaleY(1);
+    floor.cmpTransform.local.scaleX(1);
+    floor.cmpTransform.local.translateY(3);
+    level.appendChild(floor);
+
+    // floor = new Floor();
+    // floor.cmpTransform.local.scaleY(1);
+    // floor.cmpTransform.local.scaleX(.5);
+    // floor.cmpTransform.local.translateX(2);
+    // floor.cmpTransform.local.translateY(1);
+    // level.appendChild(floor)
+
+    let movingFloor: MovingFloor = new MovingFloor(new f.Vector3(2, 1.5));
+    // movingFloor.cmpTransform.local.scaleY(.2);
+    // movingFloor.cmpTransform.local.scaleX(2);
+    // level.appendChild(movingFloor);
+
+    movingFloor = new MovingFloor(new f.Vector3(-2, -1.5), 0, .1);
+    movingFloor.cmpTransform.local.scaleY(.2);
+    movingFloor.cmpTransform.local.scaleX(2);
+    level.appendChild(movingFloor);
+
     return level;
   }
 }
