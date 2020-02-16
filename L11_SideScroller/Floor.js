@@ -19,13 +19,14 @@ var L11_SideScroller;
     Floor.material = new f.Material("Floor", f.ShaderUniColor, new f.CoatColored(f.Color.CSS("red", 0.5)));
     L11_SideScroller.Floor = Floor;
     class MovingFloor extends Floor {
-        constructor(_origin, _moveX = 0.1, _moveY = 0, _direction = 1, _maxMoveDistance = 5) {
+        constructor(_origin, _moveX = 1, _moveY = 0, _direction = 1, _maxMoveDistance = 5) {
             super("MovingFloor");
             this.update = (_event) => {
-                if (this.checkForReversal())
-                    this.direction *= -1;
+                let timeFrame = f.Loop.timeFrameGame / 1000; // in seconds
+                this.checkForReversal();
                 let translation = this.cmpTransform.local.translation;
-                this.applyTranslation(translation);
+                this.move(translation, timeFrame);
+                translation.y += this.speed.y * this.direction * timeFrame;
                 this.cmpTransform.local.translation = translation;
             };
             this.originPoint = _origin;
@@ -41,9 +42,11 @@ var L11_SideScroller;
         get moveSpeed() {
             return this.speed.copy;
         }
-        applyTranslation(_targetTranslation) {
-            _targetTranslation.x += this.moveSpeed.x * this.direction;
-            _targetTranslation.y += this.moveSpeed.y * this.direction;
+        move(_targetTranslation, _timeFrame) {
+            let speed = this.moveSpeed;
+            speed.scale(_timeFrame);
+            _targetTranslation.x += speed.x * this.direction;
+            // _targetTranslation.y += speed.y * this.direction;
         }
         checkForReversal() {
             let positivDistanceCheck = this.direction == 1 &&
@@ -51,11 +54,13 @@ var L11_SideScroller;
                     this.originPoint.x + this.maxMoveDistance ||
                     this.cmpTransform.local.translation.y >
                         this.originPoint.y + this.maxMoveDistance);
-            let negativDistanceCheck;
-            this.direction == -1 &&
+            let negativDistanceCheck = this.direction == -1 &&
                 (this.cmpTransform.local.translation.x < this.originPoint.x ||
                     this.cmpTransform.local.translation.y < this.originPoint.y);
-            return positivDistanceCheck || negativDistanceCheck;
+            if (positivDistanceCheck || negativDistanceCheck) {
+                this.direction *= -1;
+            }
+            ;
         }
     }
     L11_SideScroller.MovingFloor = MovingFloor;

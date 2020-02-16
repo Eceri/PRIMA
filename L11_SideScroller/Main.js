@@ -33,8 +33,8 @@ var L11_SideScroller;
         viewport.initialize("Viewport", game, camera, canvas);
         viewport.draw();
         L11_SideScroller.f.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
-        L11_SideScroller.f.Loop.start(L11_SideScroller.f.LOOP_MODE.TIME_GAME, 10);
-        //gameloop
+        L11_SideScroller.f.Loop.start(L11_SideScroller.f.LOOP_MODE.TIME_GAME, 60);
+        //camera update
         function update() {
             processInput();
             let cameraTranslation = camera.pivot.translation;
@@ -44,6 +44,8 @@ var L11_SideScroller;
             viewport.draw();
             renderContext2D.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
             renderContext2D.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
+            let playerRect = player.getRectWorld();
+            renderContext2D.strokeRect(canvas.width / 2 - playerRect.width * 100 / 2, canvas.height / 2, playerRect.width * 111, playerRect.height * 111);
         }
         //controls
         function handleKeyboard(_event) {
@@ -62,8 +64,10 @@ var L11_SideScroller;
             }
             player.act(action, direction);
             if (keysPressed[L11_SideScroller.f.KEYBOARD_CODE.W] && player.grounded) {
-                player.act(L11_SideScroller.ACTION.LAUNCH); //should be jump squat
+                player.act(L11_SideScroller.ACTION.JUMP); //should be jump squat
             }
+            if (keysPressed[L11_SideScroller.f.KEYBOARD_CODE.Q])
+                player.swapWeapon();
             // console.log(player.speed.y)
         }
     }
@@ -81,22 +85,26 @@ var L11_SideScroller;
         floor = new L11_SideScroller.Floor();
         floor.cmpTransform.local.scaleY(1);
         floor.cmpTransform.local.scaleX(1);
-        floor.cmpTransform.local.translateY(3);
+        floor.cmpTransform.local.translateY(2.5);
         level.appendChild(floor);
         floor = new L11_SideScroller.Floor();
         floor.cmpTransform.local.scaleY(1);
-        floor.cmpTransform.local.scaleX(.5);
+        floor.cmpTransform.local.scaleX(0.5);
         floor.cmpTransform.local.translateX(2);
         floor.cmpTransform.local.translateY(1);
         level.appendChild(floor);
-        let movingFloor = new L11_SideScroller.MovingFloor(new L11_SideScroller.f.Vector3(2, 1.5));
+        let movingFloor = new L11_SideScroller.MovingFloor(new L11_SideScroller.f.Vector3(2, 1.5), 1, 0);
+        movingFloor.cmpTransform.local.scaleY(0.2);
+        movingFloor.cmpTransform.local.scaleX(2);
+        level.appendChild(movingFloor);
+        movingFloor = new L11_SideScroller.MovingFloor(new L11_SideScroller.f.Vector3(-2, -1.5), 0, 1);
+        movingFloor.cmpTransform.local.scaleY(0.2);
+        movingFloor.cmpTransform.local.scaleX(2);
+        level.appendChild(movingFloor);
+        // movingFloor = new MovingFloor(new f.Vector3(0, 0), 0, 1);
         // movingFloor.cmpTransform.local.scaleY(.2);
         // movingFloor.cmpTransform.local.scaleX(2);
         // level.appendChild(movingFloor);
-        movingFloor = new L11_SideScroller.MovingFloor(new L11_SideScroller.f.Vector3(-2, -1.5), 0, .1);
-        movingFloor.cmpTransform.local.scaleY(.2);
-        movingFloor.cmpTransform.local.scaleX(2);
-        level.appendChild(movingFloor);
         return level;
     }
 })(L11_SideScroller || (L11_SideScroller = {}));

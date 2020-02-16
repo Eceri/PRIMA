@@ -52,7 +52,7 @@ namespace L11_SideScroller {
         this.frames.push(frame);
 
         // f.Debug.log(frame.rectTexture.toString());
-        // f.Debug.log(frame.pivot.toString());
+        // f.Debug.log(frame.pivot.toString());dd
         // f.Debug.log(frame.material);
 
         count++;
@@ -141,11 +141,13 @@ namespace L11_SideScroller {
   export class NodeSprite extends f.Node {
     protected cmpMesh: f.ComponentMesh;
     private cmpMaterial: f.ComponentMaterial;
-    private sprite: Sprite;
+    public sprite: Sprite;
     private frameCurrent: number = 0;
     private direction: number = 1;
 
-    constructor(_name: string, _sprite: Sprite) {
+    public lockedFrames: number;
+
+    constructor(_name: string, _sprite: Sprite, _lockedFrames: number = 2) {
       super(_name);
 
       this.sprite = _sprite;
@@ -156,6 +158,7 @@ namespace L11_SideScroller {
 
       this.showFrame(this.frameCurrent);
 
+      this.lockedFrames = _lockedFrames;
       f.Debug.info("NodeSprite constructor", this);
     }
 
@@ -177,7 +180,7 @@ namespace L11_SideScroller {
       this.direction = Math.floor(_direction);
     }
     public getRectWorld(): f.Rectangle {
-      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 60, 100);
+      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 60, 100, f.ORIGIN2D.BOTTOMCENTER);
       let topleft: f.Vector3 = new f.Vector3(-0.5, 0.5, 0);
       let bottomright: f.Vector3 = new f.Vector3(0.5, -0.5, 0);
       let mtxResult: f.Matrix4x4 = f.Matrix4x4.MULTIPLICATION(

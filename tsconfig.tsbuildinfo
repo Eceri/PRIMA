@@ -286,24 +286,24 @@
         "signature": "f936aa382d202232245c0ac5da48d905e40c63db12f93894a892e058e1669bb7"
       },
       "./l11_sidescroller/character.ts": {
-        "version": "c8a48d290a014e57f7b5d5eac83904e02c764c0c063e77e3a728884caa475c67",
-        "signature": "cef671dba4dae1668f685a9a93d19040084990e61f8a913f1a162d6969fe8d70"
+        "version": "0b4c4118baa9eb863b8ff092ac4353527fcf408612e5f8594a9407cfbc92fdcd",
+        "signature": "e1084d6acaf9bd062fe5ee37fba5b2fe3490d1a17804e284b0c8247eae347afd"
       },
       "./l11_sidescroller/collidableobject.ts": {
-        "version": "e4b160d2d9fd2e4181dfe6997716ab1cfcc925a7885536048277a60ed8bde6df",
+        "version": "4c16683dc367577117e210209828b48d9ca40967d29a9b4efa02b7760cf240cf",
         "signature": "adbd4c2a23379840cecc7f6f5194c1662d6e42a7a584800bbcb220810bfec5b1"
       },
       "./l11_sidescroller/floor.ts": {
-        "version": "40ae9dee46477c35850206e113bcd29b36fd3ae906ce7ab10cd9cb08a38f333f",
-        "signature": "b92efbae5870b97e38bbf1648ea5f2baac0a14bc7d144e8f02d9d914d2009a0a"
+        "version": "a23c81263f24b09dade0197b3ac94da81038f96e367b7fcb34e90d880fccad66",
+        "signature": "9543c1f8c84eb1d37aebe17d258116d98d241003def3319749bc3a1f61eac00c"
       },
       "./l11_sidescroller/main.ts": {
-        "version": "0a189ed008886340cf7c115cda25fb552dc188fe240226403aadad7632a3c0b1",
+        "version": "9ddb1fc75cb8e9f5803e2b27cd01c271a47a3ac5b1bb401cdf0c6c5061b3b359",
         "signature": "eeb7149dcf99a22d9ea8c5d45cf9f343d2a3fb425137a16d9e0b56bf5ab77584"
       },
       "./l11_sidescroller/spritegenerator.ts": {
-        "version": "e2816605e91400dc6a3e8f8ef21eac4c721fbb6f7eb9530101bf4568c1017190",
-        "signature": "6be8b29da84547f7e552ab3a8a394ba6558253a95083be7af6e84e326aede3ed"
+        "version": "ecd8050a3f9941989d830801d9dff69caa4013105738aeeddf5cd2d74a30efe7",
+        "signature": "7e2d378e0000d16b3bf12c74b8e6e9a6c1bc17817084a30ceb2dfc9909614fa2"
       },
       "./pong/fudge/fudgecore.d.ts": {
         "version": "1769f56f1aa6dd715b42276abfb1f477714049320e7fe9b4e81e69395a17dff1",

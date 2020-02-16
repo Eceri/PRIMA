@@ -9,7 +9,7 @@ namespace L11_SideScroller{
     }
 
     public getRectWorld(): f.Rectangle {
-      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 100, 100, f.ORIGIN2D.CENTER);
+      let rect: f.Rectangle = f.Rectangle.GET(0, 0, 100, 100, f.ORIGIN2D.BOTTOMCENTER);
       let topleft: f.Vector3 = new f.Vector3(-0.5, 0.5, 0);
       let bottomright: f.Vector3 = new f.Vector3(0.5, -0.5, 0);
       let mtxResult: f.Matrix4x4 = this.mtxWorld

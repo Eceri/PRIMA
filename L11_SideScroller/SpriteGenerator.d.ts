@@ -26,10 +26,11 @@ declare namespace L11_SideScroller {
     class NodeSprite extends f.Node {
         protected cmpMesh: f.ComponentMesh;
         private cmpMaterial;
-        private sprite;
+        sprite: Sprite;
         private frameCurrent;
         private direction;
-        constructor(_name: string, _sprite: Sprite);
+        lockedFrames: number;
+        constructor(_name: string, _sprite: Sprite, _lockedFrames?: number);
         showFrame(_index: number): void;
         showFrameNext(): void;
         setFrameDirection(_direction: number): void;

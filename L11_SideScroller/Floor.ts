@@ -8,6 +8,7 @@ namespace L11_SideScroller {
       f.ShaderUniColor,
       new f.CoatColored(f.Color.CSS("red", 0.5))
     );
+
     public constructor(_name: string = "StaticFloor") {
       super(_name);
       this.addComponent(new f.ComponentMaterial(Floor.material));
@@ -29,7 +30,7 @@ namespace L11_SideScroller {
     private direction: number;
     public constructor(
       _origin: f.Vector3,
-      _moveX: number = 0.1,
+      _moveX: number = 1,
       _moveY: number = 0,
       _direction: number = 1,
       _maxMoveDistance: number = 5
@@ -51,29 +52,37 @@ namespace L11_SideScroller {
       return this.speed.copy;
     }
 
-    public applyTranslation(_targetTranslation: f.Vector3): void {
-      _targetTranslation.x += this.moveSpeed.x * this.direction;
-      _targetTranslation.y += this.moveSpeed.y * this.direction;
+    public move(_targetTranslation: f.Vector3, _timeFrame: number): void {
+      let speed: f.Vector3 = this.moveSpeed
+      speed.scale(_timeFrame)
+      _targetTranslation.x += speed.x * this.direction;
+      // _targetTranslation.y += speed.y * this.direction;
     }
 
-    private checkForReversal(): boolean {
+    private checkForReversal(): void {
       let positivDistanceCheck: boolean =
         this.direction == 1 &&
         (this.cmpTransform.local.translation.x >
           this.originPoint.x + this.maxMoveDistance ||
           this.cmpTransform.local.translation.y >
             this.originPoint.y + this.maxMoveDistance);
-      let negativDistanceCheck;
-      this.direction == -1 &&
+      let negativDistanceCheck =
+        this.direction == -1 &&
         (this.cmpTransform.local.translation.x < this.originPoint.x ||
           this.cmpTransform.local.translation.y < this.originPoint.y);
-      return positivDistanceCheck || negativDistanceCheck;
+      if(positivDistanceCheck || negativDistanceCheck) {
+        this.direction *= -1
+      };
     }
 
     private update = (_event: f.Eventƒ): void => {
-      if (this.checkForReversal()) this.direction *= -1;
+      let timeFrame: number = f.Loop.timeFrameGame / 1000; // in seconds
+      this.checkForReversal();
+      
       let translation: f.Vector3 = this.cmpTransform.local.translation;
-      this.applyTranslation(translation);
+      this.move(translation, timeFrame);
+      
+      translation.y += this.speed.y * this.direction * timeFrame;
       this.cmpTransform.local.translation = translation;
     };
   }

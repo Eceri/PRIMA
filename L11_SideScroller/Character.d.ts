@@ -5,7 +5,7 @@ declare namespace L11_SideScroller {
         WALK = "Walk",
         JUMP = "Jump",
         FALL = "Fall",
-        LAUNCH = "Launch"
+        ATTACK = "Attack"
     }
     enum DIRECTION {
         LEFT = 0,
@@ -17,11 +17,20 @@ declare namespace L11_SideScroller {
         private static gravity;
         speed: f.Vector3;
         grounded: boolean;
+        private currentWeapon;
+        private lastFrameTime;
+        private activeActions;
+        private framesSinceLock;
+        private lockedInAnimation;
+        private animationFPS;
         constructor(_name?: string);
         static generateSprites(_txtImage: f.TextureImage): void;
+        swapWeapon(): void;
         show(_action: ACTION): void;
         act(_action: ACTION, _direction?: DIRECTION): void;
         private update;
+        getRectWorld(): f.Rectangle;
+        releaseAnimationLock: () => void;
         private checkCollision;
     }
 }

@@ -30,7 +30,7 @@ var L11_SideScroller;
                 frame.timeScale = 1;
                 this.frames.push(frame);
                 // f.Debug.log(frame.rectTexture.toString());
-                // f.Debug.log(frame.pivot.toString());
+                // f.Debug.log(frame.pivot.toString());dd
                 // f.Debug.log(frame.material);
                 count++;
             }
@@ -75,7 +75,7 @@ var L11_SideScroller;
     Sprite.mesh = new f.MeshSprite();
     L11_SideScroller.Sprite = Sprite;
     class NodeSprite extends f.Node {
-        constructor(_name, _sprite) {
+        constructor(_name, _sprite, _lockedFrames = 2) {
             super(_name);
             this.frameCurrent = 0;
             this.direction = 1;
@@ -85,6 +85,7 @@ var L11_SideScroller;
             this.addComponent(this.cmpMesh);
             this.addComponent(this.cmpMaterial);
             this.showFrame(this.frameCurrent);
+            this.lockedFrames = _lockedFrames;
             f.Debug.info("NodeSprite constructor", this);
         }
         showFrame(_index) {
@@ -104,7 +105,7 @@ var L11_SideScroller;
             this.direction = Math.floor(_direction);
         }
         getRectWorld() {
-            let rect = f.Rectangle.GET(0, 0, 60, 100);
+            let rect = f.Rectangle.GET(0, 0, 60, 100, f.ORIGIN2D.BOTTOMCENTER);
             let topleft = new f.Vector3(-0.5, 0.5, 0);
             let bottomright = new f.Vector3(0.5, -0.5, 0);
             let mtxResult = f.Matrix4x4.MULTIPLICATION(this.mtxWorld, this.cmpMesh.pivot);
