@@ -1,5 +1,5 @@
 namespace L11_SideScroller {
-  export import f = FudgeCore;
+  import f = FudgeCore;
 
   let viewport: f.Viewport = new f.Viewport();
   const cameraDistance: number = 10;
@@ -64,10 +64,10 @@ namespace L11_SideScroller {
 
       let playerRect: f.Rectangle = player.getRectWorld();
       renderContext2D.strokeRect(
-        canvas.width / 2 - playerRect.width * 100 / 2 ,
-        canvas.height / 2 ,
+        canvas.width / 2 - (playerRect.width * 100) / 2,
+        canvas.height / 2,
         playerRect.width * 111,
-        playerRect.height * 111,
+        playerRect.height * 111
       );
     }
 
@@ -77,8 +77,11 @@ namespace L11_SideScroller {
     }
 
     function processInput(): void {
+      if (player.lockedInAnimation) return;
+   
       let action: ACTION = ACTION.IDLE;
       let direction: DIRECTION;
+   
       if (keysPressed[f.KEYBOARD_CODE.A]) {
         action = ACTION.WALK;
         direction = DIRECTION.LEFT;
@@ -86,13 +89,14 @@ namespace L11_SideScroller {
         action = ACTION.WALK;
         direction = DIRECTION.RIGHT;
       }
+      if (keysPressed[f.KEYBOARD_CODE.E]) {
+        action = ACTION.ATTACK;
+      }
       player.act(action, direction);
       if (keysPressed[f.KEYBOARD_CODE.W] && player.grounded) {
-        player.act(ACTION.JUMP); //should be jump squat
+        player.act(ACTION.JUMP); //should be jump squat, nothing here yet.
       }
       if (keysPressed[f.KEYBOARD_CODE.Q]) player.swapWeapon();
-
-      // console.log(player.speed.y)
     }
   }
 

@@ -29,11 +29,13 @@ declare namespace L11_SideScroller {
         sprite: Sprite;
         private frameCurrent;
         private direction;
-        lockedFrames: number;
+        private frameLock;
         constructor(_name: string, _sprite: Sprite, _lockedFrames?: number);
+        get lockedFrames(): number;
         showFrame(_index: number): void;
         showFrameNext(): void;
         setFrameDirection(_direction: number): void;
         getRectWorld(): f.Rectangle;
+        resetFrames(): void;
     }
 }

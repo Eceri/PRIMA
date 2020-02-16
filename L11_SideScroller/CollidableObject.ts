@@ -1,5 +1,5 @@
 namespace L11_SideScroller{
-
+  import f = FudgeCore;
   export abstract class CollidableObject extends f.Node{
     protected static readonly pivot: f.Matrix4x4 = f.Matrix4x4.TRANSLATION(f.Vector3.ZERO());
 

@@ -75,18 +75,22 @@ var L11_SideScroller;
     Sprite.mesh = new f.MeshSprite();
     L11_SideScroller.Sprite = Sprite;
     class NodeSprite extends f.Node {
-        constructor(_name, _sprite, _lockedFrames = 2) {
+        constructor(_name, _sprite, _lockedFrames = 0) {
             super(_name);
             this.frameCurrent = 0;
             this.direction = 1;
+            console.log(_name + " " + _lockedFrames);
             this.sprite = _sprite;
             this.cmpMesh = new f.ComponentMesh(Sprite.getMesh());
             this.cmpMaterial = new f.ComponentMaterial();
             this.addComponent(this.cmpMesh);
             this.addComponent(this.cmpMaterial);
             this.showFrame(this.frameCurrent);
-            this.lockedFrames = _lockedFrames;
+            this.frameLock = _lockedFrames;
             f.Debug.info("NodeSprite constructor", this);
+        }
+        get lockedFrames() {
+            return this.frameLock;
         }
         showFrame(_index) {
             let spriteFrame = this.sprite.frames[_index];
@@ -116,6 +120,9 @@ var L11_SideScroller;
             rect.position = topleft.toVector2();
             rect.size = size;
             return rect;
+        }
+        resetFrames() {
+            this.frameCurrent = 0;
         }
     }
     L11_SideScroller.NodeSprite = NodeSprite;

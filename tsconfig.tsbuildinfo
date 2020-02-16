@@ -286,24 +286,28 @@
         "signature": "f936aa382d202232245c0ac5da48d905e40c63db12f93894a892e058e1669bb7"
       },
       "./l11_sidescroller/character.ts": {
-        "version": "0b4c4118baa9eb863b8ff092ac4353527fcf408612e5f8594a9407cfbc92fdcd",
-        "signature": "e1084d6acaf9bd062fe5ee37fba5b2fe3490d1a17804e284b0c8247eae347afd"
+        "version": "06dd9e1bb2f14bd82bebed98e21f898ca7393f919f3360f1dd96c48d472decf4",
+        "signature": "dd723a475728dc3334b702208b46ff38a3f18163331630f6eb8afb4476a61f6e"
       },
       "./l11_sidescroller/collidableobject.ts": {
-        "version": "4c16683dc367577117e210209828b48d9ca40967d29a9b4efa02b7760cf240cf",
-        "signature": "adbd4c2a23379840cecc7f6f5194c1662d6e42a7a584800bbcb220810bfec5b1"
+        "version": "4962c1d330d3c404a7ecdb461163be7403f4a860492d0112185d4c09614015b0",
+        "signature": "c849459f67c526b02f54c27d063c26fe5a543b9aa5eb401e32ebf6c9f04f1bcb"
       },
       "./l11_sidescroller/floor.ts": {
         "version": "a23c81263f24b09dade0197b3ac94da81038f96e367b7fcb34e90d880fccad66",
         "signature": "9543c1f8c84eb1d37aebe17d258116d98d241003def3319749bc3a1f61eac00c"
       },
       "./l11_sidescroller/main.ts": {
-        "version": "9ddb1fc75cb8e9f5803e2b27cd01c271a47a3ac5b1bb401cdf0c6c5061b3b359",
-        "signature": "eeb7149dcf99a22d9ea8c5d45cf9f343d2a3fb425137a16d9e0b56bf5ab77584"
+        "version": "7c7bcbb3d2aa2c836e9a083bfee724273aaffba7dea9edbe14a11be31de23c3f",
+        "signature": "be1b830c11a4ee3fc3a140ece2b7ac9afc4003e4d88479554c726681f653e973"
+      },
+      "./l11_sidescroller/projectile.ts": {
+        "version": "0e2423c4181beaa23ff812d37d2e02c428d4c8d5b45935fb2dc8f4567cee1775",
+        "signature": "62233a06bb01d8fed0cfc2b68e0266d0eadb1f95bc8a288dd934ad70c085c530"
       },
       "./l11_sidescroller/spritegenerator.ts": {
-        "version": "ecd8050a3f9941989d830801d9dff69caa4013105738aeeddf5cd2d74a30efe7",
-        "signature": "7e2d378e0000d16b3bf12c74b8e6e9a6c1bc17817084a30ceb2dfc9909614fa2"
+        "version": "9801674e7ea7bdcca55bce2bc66c958d0f5c0317433777eb1c25d6ea6cf76de5",
+        "signature": "ec53e9992fd86c8f2fb663ba6c951af2172400f0a8c989b9e7e56f9c5985cc82"
       },
       "./pong/fudge/fudgecore.d.ts": {
         "version": "1769f56f1aa6dd715b42276abfb1f477714049320e7fe9b4e81e69395a17dff1",
@@ -814,6 +818,10 @@
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
       "./l11_sidescroller/main.ts": [
+        "./node_modules/@types/node/util.d.ts",
+        "./node_modules/@types/node/ts3.2/util.d.ts"
+      ],
+      "./l11_sidescroller/projectile.ts": [
         "./node_modules/@types/node/util.d.ts",
         "./node_modules/@types/node/ts3.2/util.d.ts"
       ],
@@ -1604,6 +1612,7 @@
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.full.d.ts",
+      "./l11_sidescroller/collidableobject.ts",
       "./fudge/fudgecore.d.ts",
       "./l02_first_fudge/main.ts",
       "./l03_pongpaddle/main.ts",
@@ -1634,9 +1643,10 @@
       "./l10_fudgecraft_combos/grid.ts",
       "./l10_fudgecraft_combos/main.ts",
       "./l10_fudgecraft_combos/test.ts",
-      "./l11_sidescroller/collidableobject.ts",
+      "./l11_sidescroller/character.ts",
       "./l11_sidescroller/floor.ts",
       "./l11_sidescroller/main.ts",
+      "./l11_sidescroller/projectile.ts",
       "./l11_sidescroller/spritegenerator.ts",
       "./pong/fudge/fudgecore.d.ts",
       "./node_modules/@types/node/globals.d.ts",
@@ -1684,8 +1694,7 @@
       "./node_modules/@types/node/ts3.2/globals.d.ts",
       "./node_modules/@types/node/ts3.2/index.d.ts",
       "./node_modules/@types/webgl2/index.d.ts",
-      "./node_modules/@types/ws/index.d.ts",
-      "./l11_sidescroller/character.ts"
+      "./node_modules/@types/ws/index.d.ts"
     ]
   },
   "version": "3.7.2"

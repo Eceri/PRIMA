@@ -145,11 +145,11 @@ namespace L11_SideScroller {
     private frameCurrent: number = 0;
     private direction: number = 1;
 
-    public lockedFrames: number;
+    private frameLock: number;
 
-    constructor(_name: string, _sprite: Sprite, _lockedFrames: number = 2) {
+    constructor(_name: string, _sprite: Sprite, _lockedFrames: number = 0) {
       super(_name);
-
+      console.log(_name + " " + _lockedFrames)
       this.sprite = _sprite;
       this.cmpMesh = new f.ComponentMesh(Sprite.getMesh());
       this.cmpMaterial = new f.ComponentMaterial();
@@ -158,8 +158,12 @@ namespace L11_SideScroller {
 
       this.showFrame(this.frameCurrent);
 
-      this.lockedFrames = _lockedFrames;
+      this.frameLock = _lockedFrames;
       f.Debug.info("NodeSprite constructor", this);
+    }
+
+    public get lockedFrames(){
+      return this.frameLock
     }
 
     public showFrame(_index: number): void {
@@ -198,6 +202,10 @@ namespace L11_SideScroller {
       rect.position = topleft.toVector2();
       rect.size = size;
       return rect;
+    }
+
+    public resetFrames(): void {
+      this.frameCurrent = 0;
     }
   }
 }

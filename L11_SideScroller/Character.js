@@ -26,36 +26,47 @@ var L11_SideScroller;
         constructor(_name = "Player") {
             super(_name);
             this.speed = f.Vector3.ZERO();
-            this.grounded = true;
-            this.currentWeapon = WEAPON.AXE;
             this.lastFrameTime = 0;
-            this.activeActions = [];
             this.framesSinceLock = 0;
             this.lockedInAnimation = false;
-            this.animationFPS = 0.2; // .2 = 5 FPS
+            this.animationTime = 0.2; // .2 = 5 FPS
+            this.direction = 1;
+            this.grounded = true;
+            this.currentWeapon = WEAPON.AXE;
+            this.lastWeaponSwapTime = 1;
             this.update = (_event) => {
                 let timeFrame = f.Loop.timeFrameGame / 1000; // in seconds
-                //simple limit to animation, so the game can run at higher frame rates
+                //simple limit to animation, so the game can run at higher frame rates, while animation are slower.
                 this.lastFrameTime += timeFrame;
-                while (this.lastFrameTime > this.animationFPS) {
+                this.lastWeaponSwapTime += timeFrame;
+                while (this.lastFrameTime > this.animationTime) {
                     this.broadcastEvent(new CustomEvent("showNext"));
                     this.framesSinceLock += 1;
-                    let activeNodeSprite = (this.getChildren().find(child => child.isActive));
-                    this.lockedInAnimation =
-                        this.framesSinceLock < activeNodeSprite.lockedFrames;
-                    this.lastFrameTime -= this.animationFPS;
+                    let activeNodeSprite = this.getActiveNodeSprite();
+                    if (this.framesSinceLock > activeNodeSprite.lockedFrames) {
+                        if (activeNodeSprite.name == ACTION.ATTACK + WEAPON.SCEPTER) {
+                            this.spawnScepterProjectile();
+                        }
+                        this.lockedInAnimation = false;
+                    }
+                    this.lastFrameTime -= this.animationTime;
                 }
                 this.speed.y += Character.gravity.y * timeFrame;
                 let distance = f.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
                 this.checkCollision();
             };
-            this.releaseAnimationLock = () => {
-                this.activeActions.pop();
-            };
             this.addComponent(new f.ComponentTransform());
             for (let sprite of Character.sprites) {
-                let nodeSprite = new L11_SideScroller.NodeSprite(sprite.name, sprite);
+                //frameLock needs to be somewhere else
+                let frameLock;
+                if (sprite.name == ACTION.ATTACK + WEAPON.AXE) {
+                    frameLock = 3;
+                }
+                else if (sprite.name == ACTION.ATTACK + WEAPON.SCEPTER) {
+                    frameLock = 4;
+                }
+                let nodeSprite = new L11_SideScroller.NodeSprite(sprite.name, sprite, frameLock);
                 nodeSprite.activate(false);
                 nodeSprite.addComponent(new f.ComponentTransform());
                 nodeSprite.addEventListener("showNext", (_event) => {
@@ -65,7 +76,6 @@ var L11_SideScroller;
             }
             this.show(ACTION.IDLE);
             f.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
-            this.addEventListener("lockFramesEnded", this.releaseAnimationLock);
         }
         static generateSprites(_txtImage) {
             Character.sprites = [];
@@ -75,6 +85,9 @@ var L11_SideScroller;
             Character.sprites.push(sprite);
             sprite = new L11_SideScroller.Sprite(ACTION.WALK + WEAPON.AXE);
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(45, 75, 80, 80), 4, f.Vector2.X(85), 90, f.ORIGIN2D.BOTTOMCENTER);
+            Character.sprites.push(sprite);
+            sprite = new L11_SideScroller.Sprite(ACTION.ATTACK + WEAPON.AXE);
+            sprite.generateByGrid(_txtImage, f.Rectangle.GET(40, 395, 110, 80), 4, f.Vector2.X(55), 90, f.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
             sprite = new L11_SideScroller.Sprite(ACTION.JUMP + WEAPON.AXE);
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(40, 75, 80, 80), 1, f.Vector2.X(80), 90, f.ORIGIN2D.BOTTOMCENTER);
@@ -89,6 +102,9 @@ var L11_SideScroller;
             sprite = new L11_SideScroller.Sprite(ACTION.IDLE + WEAPON.SCEPTER);
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(55, 725, 70, 70), 4, f.Vector2.X(90), 90, f.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
+            sprite = new L11_SideScroller.Sprite(ACTION.ATTACK + WEAPON.SCEPTER);
+            sprite.generateByGrid(_txtImage, f.Rectangle.GET(40, 875, 110, 80), 4, f.Vector2.X(55), 90, f.ORIGIN2D.BOTTOMCENTER);
+            Character.sprites.push(sprite);
             sprite = new L11_SideScroller.Sprite(ACTION.JUMP + WEAPON.SCEPTER);
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(40, 75, 80, 80), 1, f.Vector2.X(80), 90, f.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
@@ -96,55 +112,68 @@ var L11_SideScroller;
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(40, 1035, 80, 80), 2, f.Vector2.X(80), 90, f.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
         }
+        getActiveNodeSprite() {
+            return this.getChildren().find(child => child.isActive);
+        }
         swapWeapon() {
-            this.currentWeapon =
-                this.currentWeapon == WEAPON.AXE ? WEAPON.SCEPTER : WEAPON.AXE;
-            console.log("WeaponSwap! new Weapon: " + this.currentWeapon);
+            if (this.lastWeaponSwapTime > 1) {
+                this.currentWeapon =
+                    this.currentWeapon == WEAPON.AXE ? WEAPON.SCEPTER : WEAPON.AXE;
+                this.lastWeaponSwapTime = 0;
+                this.grounded = true;
+                console.log("WeaponSwap! new Weapon: " + this.currentWeapon);
+            }
         }
         show(_action) {
             let actionName = _action + this.currentWeapon;
-            console.log(actionName);
             for (let child of this.getChildren())
                 child.activate(child.name == actionName);
         }
         act(_action, _direction) {
-            // if (!this.lockedInAnimation) {
-            let currentAction = _action;
-            if (this.speed.y != 0) {
-                this.grounded = false;
-                if (_action != ACTION.WALK)
-                    currentAction = ACTION.FALL;
+            if (!this.lockedInAnimation) {
+                let currentAction = _action;
+                if (_direction != undefined) {
+                    this.direction = _direction == DIRECTION.RIGHT ? 1 : -1;
+                }
+                switch (currentAction) {
+                    case ACTION.IDLE:
+                        this.speed.x = 0;
+                        break;
+                    case ACTION.JUMP:
+                        if (this.grounded)
+                            this.speed.y = 5;
+                        this.framesSinceLock = 0;
+                        break;
+                    case ACTION.WALK:
+                        this.speed.x = Character.speedMax.x * this.direction;
+                        for (let child of this.getChildren())
+                            child.cmpTransform.local.rotation = f.Vector3.Y(90 - 90 * this.direction);
+                        break;
+                    case ACTION.ATTACK:
+                        this.framesSinceLock = 0;
+                        this.getActiveNodeSprite().resetFrames();
+                        this.lockedInAnimation = true;
+                        if (this.speed.y != 0 && this.currentWeapon == WEAPON.AXE)
+                            this.speed.x *= 2;
+                        break;
+                }
+                if (this.speed.y != 0) {
+                    this.grounded = false;
+                    if (_action != ACTION.WALK && _action != ACTION.ATTACK)
+                        currentAction = ACTION.FALL;
+                }
+                this.show(currentAction);
             }
-            switch (currentAction) {
-                case ACTION.IDLE:
-                    this.speed.x = 0;
-                    break;
-                case ACTION.JUMP:
-                    console.log("JUMPED");
-                    if (this.grounded)
-                        this.speed.y = 5;
-                    this.lockedInAnimation = true;
-                    console.log(this.lockedInAnimation);
-                    this.framesSinceLock = 0;
-                    break;
-                case ACTION.WALK:
-                    let direction = _direction == DIRECTION.RIGHT ? 1 : -1;
-                    this.speed.x = Character.speedMax.x * direction;
-                    for (let child of this.getChildren())
-                        child.cmpTransform.local.rotation = f.Vector3.Y(90 - 90 * direction);
-                    break;
-            }
-            this.show(currentAction);
-            // }
+        }
+        spawnScepterProjectile() {
+            this.speed.y = 10;
         }
         getRectWorld() {
-            let activeChild = (this.getChildren().find(child => child.isActive));
-            return activeChild.getRectWorld();
-            // return this.hitRect.copy
+            return this.getActiveNodeSprite().getRectWorld();
         }
         checkCollision() {
+            f.RenderManager.update();
             for (let floor of L11_SideScroller.level.getChildren()) {
-                f.RenderManager.update();
                 let rectFloor = floor.getRectWorld();
                 let rectPlayer = this.getRectWorld();
                 if (rectFloor.collides(rectPlayer)) {
