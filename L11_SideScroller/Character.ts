@@ -59,6 +59,7 @@ namespace L11_SideScroller {
         
         this.appendChild(nodeSprite);
       }
+
       this.addEventListener(
         "showNext",
         this.showNextFrame,
