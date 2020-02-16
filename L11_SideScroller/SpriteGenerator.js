@@ -79,7 +79,6 @@ var L11_SideScroller;
             super(_name);
             this.frameCurrent = 0;
             this.direction = 1;
-            console.log(_name + " " + _lockedFrames);
             this.sprite = _sprite;
             this.cmpMesh = new f.ComponentMesh(Sprite.getMesh());
             this.cmpMaterial = new f.ComponentMaterial();
@@ -87,7 +86,7 @@ var L11_SideScroller;
             this.addComponent(this.cmpMaterial);
             this.showFrame(this.frameCurrent);
             this.frameLock = _lockedFrames;
-            f.Debug.info("NodeSprite constructor", this);
+            // f.Debug.info("NodeSprite constructor", this);
         }
         get lockedFrames() {
             return this.frameLock;

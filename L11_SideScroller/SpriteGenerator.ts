@@ -149,7 +149,6 @@ namespace L11_SideScroller {
 
     constructor(_name: string, _sprite: Sprite, _lockedFrames: number = 0) {
       super(_name);
-      console.log(_name + " " + _lockedFrames)
       this.sprite = _sprite;
       this.cmpMesh = new f.ComponentMesh(Sprite.getMesh());
       this.cmpMaterial = new f.ComponentMaterial();
@@ -159,7 +158,7 @@ namespace L11_SideScroller {
       this.showFrame(this.frameCurrent);
 
       this.frameLock = _lockedFrames;
-      f.Debug.info("NodeSprite constructor", this);
+      // f.Debug.info("NodeSprite constructor", this);
     }
 
     public get lockedFrames(){

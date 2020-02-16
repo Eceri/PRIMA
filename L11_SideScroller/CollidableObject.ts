@@ -4,8 +4,7 @@ namespace L11_SideScroller{
     protected static readonly pivot: f.Matrix4x4 = f.Matrix4x4.TRANSLATION(f.Vector3.ZERO());
 
     public constructor(_name: string){
-      super(_name);
-      
+      super(_name); 
     }
 
     public getRectWorld(): f.Rectangle {

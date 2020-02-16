@@ -26,31 +26,27 @@ var L11_SideScroller;
         constructor(_name = "Player") {
             super(_name);
             this.speed = f.Vector3.ZERO();
-            this.lastFrameTime = 0;
             this.framesSinceLock = 0;
             this.lockedInAnimation = false;
-            this.animationTime = 0.2; // .2 = 5 FPS
             this.direction = 1;
             this.grounded = true;
             this.currentWeapon = WEAPON.AXE;
             this.lastWeaponSwapTime = 1;
+            this.showNextFrame = () => {
+                this.getActiveNodeSprite().showFrameNext();
+                this.framesSinceLock += 1;
+            };
             this.update = (_event) => {
                 let timeFrame = f.Loop.timeFrameGame / 1000; // in seconds
-                //simple limit to animation, so the game can run at higher frame rates, while animation are slower.
-                this.lastFrameTime += timeFrame;
                 this.lastWeaponSwapTime += timeFrame;
-                while (this.lastFrameTime > this.animationTime) {
-                    this.broadcastEvent(new CustomEvent("showNext"));
-                    this.framesSinceLock += 1;
-                    let activeNodeSprite = this.getActiveNodeSprite();
-                    if (this.framesSinceLock > activeNodeSprite.lockedFrames) {
-                        if (activeNodeSprite.name == ACTION.ATTACK + WEAPON.SCEPTER) {
-                            this.spawnScepterProjectile();
-                        }
-                        this.lockedInAnimation = false;
+                let activeNodeSprite = this.getActiveNodeSprite();
+                if (this.framesSinceLock > activeNodeSprite.lockedFrames) {
+                    if (activeNodeSprite.name == ACTION.ATTACK + WEAPON.SCEPTER) {
+                        this.spawnScepterProjectile();
                     }
-                    this.lastFrameTime -= this.animationTime;
+                    this.lockedInAnimation = false;
                 }
+                ;
                 this.speed.y += Character.gravity.y * timeFrame;
                 let distance = f.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
@@ -69,16 +65,13 @@ var L11_SideScroller;
                 let nodeSprite = new L11_SideScroller.NodeSprite(sprite.name, sprite, frameLock);
                 nodeSprite.activate(false);
                 nodeSprite.addComponent(new f.ComponentTransform());
-                nodeSprite.addEventListener("showNext", (_event) => {
-                    _event.currentTarget.showFrameNext();
-                }, true);
                 this.appendChild(nodeSprite);
             }
+            this.addEventListener("showNext", this.showNextFrame, true);
             this.show(ACTION.IDLE);
             f.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, this.update);
         }
         static generateSprites(_txtImage) {
-            Character.sprites = [];
             //Axe Sprites
             let sprite = new L11_SideScroller.Sprite(ACTION.IDLE + WEAPON.AXE);
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(55, 245, 70, 70), 4, f.Vector2.X(90), 90, f.ORIGIN2D.BOTTOMCENTER);
@@ -111,6 +104,10 @@ var L11_SideScroller;
             sprite = new L11_SideScroller.Sprite(ACTION.FALL + WEAPON.SCEPTER);
             sprite.generateByGrid(_txtImage, f.Rectangle.GET(40, 1035, 80, 80), 2, f.Vector2.X(80), 90, f.ORIGIN2D.BOTTOMCENTER);
             Character.sprites.push(sprite);
+            //projectile Sprite
+            sprite = new L11_SideScroller.Sprite(WEAPON.SCEPTER + "PROJECTILE");
+            sprite.generateByGrid(_txtImage, f.Rectangle.GET(5, 1255, 75, 25), 4, f.Vector2.X(85), 150, f.ORIGIN2D.BOTTOMCENTER);
+            Character.projectileSprite = sprite;
         }
         getActiveNodeSprite() {
             return this.getChildren().find(child => child.isActive);
@@ -120,8 +117,6 @@ var L11_SideScroller;
                 this.currentWeapon =
                     this.currentWeapon == WEAPON.AXE ? WEAPON.SCEPTER : WEAPON.AXE;
                 this.lastWeaponSwapTime = 0;
-                this.grounded = true;
-                console.log("WeaponSwap! new Weapon: " + this.currentWeapon);
             }
         }
         show(_action) {
@@ -166,14 +161,17 @@ var L11_SideScroller;
             }
         }
         spawnScepterProjectile() {
-            this.speed.y = 10;
+            let translation = this.cmpTransform.local.translation;
+            translation.y -= this.getRectWorld().height / 2;
+            let projectile = new L11_SideScroller.Projectile("ScepterAttack", Character.projectileSprite, translation, this.direction, f.Vector3.X(5));
+            this.getParent().appendChild(projectile);
         }
         getRectWorld() {
             return this.getActiveNodeSprite().getRectWorld();
         }
         checkCollision() {
             f.RenderManager.update();
-            for (let floor of L11_SideScroller.level.getChildren()) {
+            for (let floor of L11_SideScroller.level.getChildrenByName("Floor")) {
                 let rectFloor = floor.getRectWorld();
                 let rectPlayer = this.getRectWorld();
                 if (rectFloor.collides(rectPlayer)) {
@@ -217,8 +215,9 @@ var L11_SideScroller;
             }
         }
     }
+    Character.sprites = [];
     Character.speedMax = new f.Vector2(2.5, 10); // units per second
-    Character.gravity = f.Vector2.Y(-9);
+    Character.gravity = f.Vector2.Y(-10);
     L11_SideScroller.Character = Character;
 })(L11_SideScroller || (L11_SideScroller = {}));
 //# sourceMappingURL=Character.js.map

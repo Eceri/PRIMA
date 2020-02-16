@@ -3,7 +3,7 @@ var L11_SideScroller;
 (function (L11_SideScroller) {
     var f = FudgeCore;
     class Floor extends L11_SideScroller.CollidableObject {
-        constructor(_name = "StaticFloor") {
+        constructor(_name = "Floor") {
             super(_name);
             this.addComponent(new f.ComponentMaterial(Floor.material));
             let cmpMesh = new f.ComponentMesh(Floor.mesh);
@@ -20,7 +20,7 @@ var L11_SideScroller;
     L11_SideScroller.Floor = Floor;
     class MovingFloor extends Floor {
         constructor(_origin, _moveX = 1, _moveY = 0, _direction = 1, _maxMoveDistance = 5) {
-            super("MovingFloor");
+            super("Floor");
             this.update = (_event) => {
                 let timeFrame = f.Loop.timeFrameGame / 1000; // in seconds
                 this.checkForReversal();

@@ -9,7 +9,7 @@ namespace L11_SideScroller {
       new f.CoatColored(f.Color.CSS("red", 0.5))
     );
 
-    public constructor(_name: string = "StaticFloor") {
+    public constructor(_name: string = "Floor") {
       super(_name);
       this.addComponent(new f.ComponentMaterial(Floor.material));
       let cmpMesh: f.ComponentMesh = new f.ComponentMesh(Floor.mesh);
@@ -35,7 +35,7 @@ namespace L11_SideScroller {
       _direction: number = 1,
       _maxMoveDistance: number = 5
     ) {
-      super("MovingFloor");
+      super("Floor");
       this.originPoint = _origin;
       this.speed = new f.Vector3(_moveX, _moveY);
       this.maxMoveDistance = _maxMoveDistance;

@@ -6,6 +6,8 @@ var L11_SideScroller;
     const cameraDistance = 10;
     let player;
     let keysPressed = {};
+    let lastFrameTime = 0, animationTime = .2;
+    // export let game: f.Node = new f.Node("Game");
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
         //game
@@ -19,7 +21,6 @@ var L11_SideScroller;
         let playerSpritesheet = document.querySelector("img");
         let playerTexture = new f.TextureImage();
         playerTexture.image = playerSpritesheet;
-        L11_SideScroller.Character.generateSprites(playerTexture);
         L11_SideScroller.Character.generateSprites(playerTexture);
         L11_SideScroller.level = createLevel();
         player = new L11_SideScroller.Character("Player");
@@ -37,6 +38,16 @@ var L11_SideScroller;
         //camera update
         function update() {
             processInput();
+            let timeFrame = f.Loop.timeFrameGame / 1000; // in seconds
+            //simple limit to animation, so the game can run at higher frame rates, while animation are slower.
+            lastFrameTime += timeFrame;
+            while (lastFrameTime > animationTime) {
+                game.broadcastEvent(new CustomEvent("showNext"));
+                lastFrameTime -= animationTime;
+            }
+            ;
+            let playerRect = player.getRectWorld();
+            renderContext2D.strokeRect(canvas.width / 2 - (playerRect.width * 100) / 2, canvas.height / 2, playerRect.width * 111, playerRect.height * 111);
             let cameraTranslation = camera.pivot.translation;
             let playerTranslation = player.mtxWorld.translation;
             camera.pivot.translateX(playerTranslation.x - cameraTranslation.x);
@@ -44,8 +55,6 @@ var L11_SideScroller;
             viewport.draw();
             renderContext2D.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
             renderContext2D.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
-            let playerRect = player.getRectWorld();
-            renderContext2D.strokeRect(canvas.width / 2 - (playerRect.width * 100) / 2, canvas.height / 2, playerRect.width * 111, playerRect.height * 111);
         }
         //controls
         function handleKeyboard(_event) {
@@ -76,40 +85,36 @@ var L11_SideScroller;
         }
     }
     function createLevel() {
-        let level = new f.Node("Level");
+        let newLevel = new f.Node("Level");
         let floor = new L11_SideScroller.Floor();
         floor.cmpTransform.local.scaleY(1);
-        level.appendChild(floor);
+        newLevel.appendChild(floor);
         floor = new L11_SideScroller.Floor();
         floor.cmpTransform.local.scaleY(1);
         floor.cmpTransform.local.scaleX(2);
         floor.cmpTransform.local.translateY(0.1);
         floor.cmpTransform.local.translateX(2);
-        level.appendChild(floor);
+        newLevel.appendChild(floor);
         floor = new L11_SideScroller.Floor();
         floor.cmpTransform.local.scaleY(1);
         floor.cmpTransform.local.scaleX(1);
         floor.cmpTransform.local.translateY(2.5);
-        level.appendChild(floor);
+        newLevel.appendChild(floor);
         floor = new L11_SideScroller.Floor();
         floor.cmpTransform.local.scaleY(1);
         floor.cmpTransform.local.scaleX(0.5);
         floor.cmpTransform.local.translateX(2);
         floor.cmpTransform.local.translateY(1);
-        level.appendChild(floor);
+        newLevel.appendChild(floor);
         let movingFloor = new L11_SideScroller.MovingFloor(new f.Vector3(2, 1.5), 1, 0);
         movingFloor.cmpTransform.local.scaleY(0.2);
         movingFloor.cmpTransform.local.scaleX(2);
-        level.appendChild(movingFloor);
+        newLevel.appendChild(movingFloor);
         movingFloor = new L11_SideScroller.MovingFloor(new f.Vector3(-2, -1.5), 0, 1);
         movingFloor.cmpTransform.local.scaleY(0.2);
         movingFloor.cmpTransform.local.scaleX(2);
-        level.appendChild(movingFloor);
-        // movingFloor = new MovingFloor(new f.Vector3(0, 0), 0, 1);
-        // movingFloor.cmpTransform.local.scaleY(.2);
-        // movingFloor.cmpTransform.local.scaleX(2);
-        // level.appendChild(movingFloor);
-        return level;
+        newLevel.appendChild(movingFloor);
+        return newLevel;
     }
 })(L11_SideScroller || (L11_SideScroller = {}));
 //# sourceMappingURL=Main.js.map
