@@ -306,7 +306,7 @@
         "signature": "00b3d21860c9e60618ae2456dfe9193c5331370610af26d1a5a5fd5207959a00"
       },
       "./l11_sidescroller/main.ts": {
-        "version": "37153254912b7349182b198e04e4a454f48aedc5f8a237219453424fb1259f3a",
+        "version": "417eb8e7094fd64ed866a05968bc0d6e7ed670b570779ed4bbf7fbe149f291b7",
         "signature": "be1b830c11a4ee3fc3a140ece2b7ac9afc4003e4d88479554c726681f653e973"
       },
       "./l11_sidescroller/projectile.ts": {
@@ -1628,7 +1628,6 @@
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.bigint.d.ts",
       "c:/users/michael/appdata/roaming/npm/node_modules/typescript/lib/lib.esnext.full.d.ts",
-      "./l11_sidescroller/floor.ts",
       "./fudge/fudgecore.d.ts",
       "./l02_first_fudge/main.ts",
       "./l03_pongpaddle/main.ts",
@@ -1662,6 +1661,7 @@
       "./l11_sidescroller/background.ts",
       "./l11_sidescroller/character.ts",
       "./l11_sidescroller/collidableobject.ts",
+      "./l11_sidescroller/floor.ts",
       [
         "./l11_sidescroller/level.ts",
         [
@@ -1676,7 +1676,6 @@
           }
         ]
       ],
-      "./l11_sidescroller/main.ts",
       "./l11_sidescroller/projectile.ts",
       "./l11_sidescroller/spritegenerator.ts",
       "./pong/fudge/fudgecore.d.ts",
@@ -1725,7 +1724,8 @@
       "./node_modules/@types/node/ts3.2/globals.d.ts",
       "./node_modules/@types/node/ts3.2/index.d.ts",
       "./node_modules/@types/webgl2/index.d.ts",
-      "./node_modules/@types/ws/index.d.ts"
+      "./node_modules/@types/ws/index.d.ts",
+      "./l11_sidescroller/main.ts"
     ]
   },
   "version": "3.7.2"

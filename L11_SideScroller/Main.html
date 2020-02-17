@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>PRIMA: Platformer</title>
+
+  <link rel="stylesheet" type="text/css" href="Styles.css">
+
   <script type="text/javascript" src="Levels.json"></script>
   <script src="../Fudge/FudgeCore.js"></script>
   <script src="Main.js"></script>
@@ -15,16 +17,26 @@
   <script src="Projectile.js"></script>
   <script src="Background.js"></script>
   <script src="Level.js"></script>
-</head>
-<body style="color: white; background-color: black;">
-  <h1>PRIMA: Platformer</h1>
-  <div style="position: relative;">
-    <canvas width="1280" height="720">
 
-    </canvas>
-    <div id= menu style="font-size: large;position: absolute; top: 0; left: 0; z-index: 1;">
-      <button id="playBtn">
-        Play
+  <title>PRIMA: Platformer</title>
+</head>
+<body >
+  <h1>PRIMA: Platformer</h1>
+  <div id="canvasContainer">
+    <canvas width="1280" height="720"></canvas>
+    <div id="menu">
+      Game
+      <button id="continueBtn"> 
+        Continue
+      </button>
+      <button id="muteBtn">
+        Mute
+      </button>
+    </div>
+    <div id="startScreen">
+      Game
+      <button id="startBtn"> 
+        Start
       </button>
     </div>
   </div>

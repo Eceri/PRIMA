@@ -81,20 +81,61 @@ namespace L11_SideScroller {
     document.addEventListener("keydown", handleKeyboard);
     document.addEventListener("keyup", handleKeyboard);
 
-    document.querySelector("#playBtn").addEventListener("click", () => {
-      let audio: HTMLAudioElement = document.querySelector("audio");
-      audio.loop = true;
-      audio.play();
-    });
+
+    //Buttons for Menus
+    let menu: HTMLHtmlElement = <HTMLHtmlElement>document.getElementById("menu")
+    let continueBtn = document.getElementById("continueBtn")
+    let muteBtn = document.getElementById("muteBtn");
+    let startBtn = document.getElementById("startBtn");
+    
+    muteBtn.addEventListener("click", muteMusic);
+    startBtn.addEventListener("click", startGame)
+    continueBtn.addEventListener("click", continueGame)
 
     f.RenderManager.initialize(false, false);
     viewport.initialize("Viewport", game, camera, canvas);
     viewport.draw();
 
+    let currentTimeScale: number = 0;
+
+    f.Time.game.setScale(currentTimeScale);
     f.Loop.addEventListener(f.EVENT.LOOP_FRAME, update);
     f.Loop.start(f.LOOP_MODE.TIME_GAME, 60);
 
     viewport.showSceneGraph();
+
+    function pauseGame() {
+      currentTimeScale = 0;
+      f.Time.game.setScale(currentTimeScale);
+      menu.style.zIndex = "1";
+    }
+
+    function continueGame() {
+      currentTimeScale = 1;
+      f.Time.game.setScale(currentTimeScale);
+      menu.style.zIndex = "-1";
+    }
+
+    function startGame() {
+      currentTimeScale = 1;
+      f.Time.game.setScale(currentTimeScale);;
+      startBtn.style.zIndex = "-5";
+      document.getElementById("startScreen").style.display = "none";
+      let audio: HTMLAudioElement = document.querySelector("audio");
+      audio.loop = true;
+      audio.play();
+    }
+
+    function muteMusic() {
+      let audio: HTMLAudioElement = document.querySelector("audio");
+      if (audio. muted){
+        audio.muted = false;
+        audio.innerHTML  = "Mute";
+      } else {
+        audio.muted = true;
+        audio.innerHTML  = "Unmute";
+      }
+    }
 
     //camera update
     function update() {
@@ -126,6 +167,15 @@ namespace L11_SideScroller {
     //controls
     function handleKeyboard(_event: KeyboardEvent): void {
       keysPressed[_event.code] = _event.type == "keydown";
+
+      if(keysPressed[f.KEYBOARD_CODE.ESC]) {
+        console.log("ecp TimeScale: " + currentTimeScale)
+        if(currentTimeScale == 1) {
+          pauseGame()
+        }else {
+          continueGame();
+        }
+      }
     }
 
     function processInput(): void {
@@ -149,6 +199,7 @@ namespace L11_SideScroller {
         player.act(ACTION.JUMP); //should be jump squat, nothing here yet.
       }
       if (keysPressed[f.KEYBOARD_CODE.Q]) player.swapWeapon();
+      
     }
   }
 }
