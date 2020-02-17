@@ -6,10 +6,23 @@ var L11_SideScroller;
     const cameraDistance = 10;
     let player;
     let keysPressed = {};
-    let lastFrameTime = 0, animationTime = .2;
+    let lastFrameTime = 0, animationTime = 0.2;
+    let readJson;
+    function init(_event) {
+        fetch("./Levels.json")
+            .then(response => response.json())
+            .then(json => {
+            console.log("json responded: " + json);
+            readJson = json;
+        })
+            .then(() => handleLoad(_event))
+            .catch(error => console.log(error));
+    }
     // export let game: f.Node = new f.Node("Game");
-    window.addEventListener("load", handleLoad);
+    window.addEventListener("load", init);
     function handleLoad(_event) {
+        console.log("initlialising game");
+        L11_SideScroller.Level.levelsJSON = readJson;
         //game
         const canvas = document.querySelector("canvas");
         let camera = new f.ComponentCamera();
@@ -17,24 +30,40 @@ var L11_SideScroller;
         camera.pivot.translateZ(cameraDistance);
         camera.pivot.lookAt(f.Vector3.ZERO());
         let renderContext2D = canvas.getContext("2d");
+        //images
+        let images = [];
+        for (let element of document.querySelectorAll("img")) {
+            images.push(element);
+        }
         //player
-        let playerSpritesheet = document.querySelector("img");
+        let playerSpritesheet = images.find(image => image.id == "player");
         let playerTexture = new f.TextureImage();
         playerTexture.image = playerSpritesheet;
         L11_SideScroller.Character.generateSprites(playerTexture);
-        L11_SideScroller.level = createLevel();
+        L11_SideScroller.level = new L11_SideScroller.Level(1);
         player = new L11_SideScroller.Character("Player");
         let game = new f.Node("Game");
         game.appendChild(L11_SideScroller.level);
         game.appendChild(player);
-        // f.Debug.log(viewport);
+        //background
+        let backgroundImageElements = images.filter(element => element.className == "background");
+        backgroundImageElements.map(element => console.log(element.id));
+        let background = new L11_SideScroller.Background("Background", backgroundImageElements);
+        L11_SideScroller.level.appendChild(background);
+        //add listeners and start game
         document.addEventListener("keydown", handleKeyboard);
         document.addEventListener("keyup", handleKeyboard);
-        f.RenderManager.initialize(true, false);
+        document.querySelector("#playBtn").addEventListener("click", () => {
+            let audio = document.querySelector("audio");
+            audio.loop = true;
+            audio.play();
+        });
+        f.RenderManager.initialize(false, false);
         viewport.initialize("Viewport", game, camera, canvas);
         viewport.draw();
         f.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         f.Loop.start(f.LOOP_MODE.TIME_GAME, 60);
+        viewport.showSceneGraph();
         //camera update
         function update() {
             processInput();
@@ -45,16 +74,13 @@ var L11_SideScroller;
                 game.broadcastEvent(new CustomEvent("showNext"));
                 lastFrameTime -= animationTime;
             }
-            ;
             let playerRect = player.getRectWorld();
             renderContext2D.strokeRect(canvas.width / 2 - (playerRect.width * 100) / 2, canvas.height / 2, playerRect.width * 111, playerRect.height * 111);
             let cameraTranslation = camera.pivot.translation;
             let playerTranslation = player.mtxWorld.translation;
             camera.pivot.translateX(playerTranslation.x - cameraTranslation.x);
-            camera.pivot.translateY(playerTranslation.y - cameraTranslation.y); //rethink
+            camera.pivot.translateY(playerTranslation.y - cameraTranslation.y);
             viewport.draw();
-            renderContext2D.strokeRect(-1, -1, canvas.width / 2, canvas.height + 2);
-            renderContext2D.strokeRect(-1, canvas.height / 2, canvas.width + 2, canvas.height);
         }
         //controls
         function handleKeyboard(_event) {
@@ -83,38 +109,6 @@ var L11_SideScroller;
             if (keysPressed[f.KEYBOARD_CODE.Q])
                 player.swapWeapon();
         }
-    }
-    function createLevel() {
-        let newLevel = new f.Node("Level");
-        let floor = new L11_SideScroller.Floor();
-        floor.cmpTransform.local.scaleY(1);
-        newLevel.appendChild(floor);
-        floor = new L11_SideScroller.Floor();
-        floor.cmpTransform.local.scaleY(1);
-        floor.cmpTransform.local.scaleX(2);
-        floor.cmpTransform.local.translateY(0.1);
-        floor.cmpTransform.local.translateX(2);
-        newLevel.appendChild(floor);
-        floor = new L11_SideScroller.Floor();
-        floor.cmpTransform.local.scaleY(1);
-        floor.cmpTransform.local.scaleX(1);
-        floor.cmpTransform.local.translateY(2.5);
-        newLevel.appendChild(floor);
-        floor = new L11_SideScroller.Floor();
-        floor.cmpTransform.local.scaleY(1);
-        floor.cmpTransform.local.scaleX(0.5);
-        floor.cmpTransform.local.translateX(2);
-        floor.cmpTransform.local.translateY(1);
-        newLevel.appendChild(floor);
-        let movingFloor = new L11_SideScroller.MovingFloor(new f.Vector3(2, 1.5), 1, 0);
-        movingFloor.cmpTransform.local.scaleY(0.2);
-        movingFloor.cmpTransform.local.scaleX(2);
-        newLevel.appendChild(movingFloor);
-        movingFloor = new L11_SideScroller.MovingFloor(new f.Vector3(-2, -1.5), 0, 1);
-        movingFloor.cmpTransform.local.scaleY(0.2);
-        movingFloor.cmpTransform.local.scaleX(2);
-        newLevel.appendChild(movingFloor);
-        return newLevel;
     }
 })(L11_SideScroller || (L11_SideScroller = {}));
 //# sourceMappingURL=Main.js.map

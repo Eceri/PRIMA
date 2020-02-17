@@ -46,11 +46,14 @@ var L11_SideScroller;
                     }
                     this.lockedInAnimation = false;
                 }
-                ;
-                this.speed.y += Character.gravity.y * timeFrame;
+                this.speed.y += Math.min(Character.gravity.y * timeFrame, Character.speedMax.y);
                 let distance = f.Vector3.SCALE(this.speed, timeFrame);
                 this.cmpTransform.local.translate(distance);
                 this.checkCollision();
+                // console.log(this.cmpTransform.local.translation.y)
+                if (this.cmpTransform.local.translation.y <= -25) {
+                    this.cmpTransform.local.translation = f.Vector3.Y(1);
+                }
             };
             this.addComponent(new f.ComponentTransform());
             for (let sprite of Character.sprites) {
@@ -106,7 +109,7 @@ var L11_SideScroller;
             Character.sprites.push(sprite);
             //projectile Sprite
             sprite = new L11_SideScroller.Sprite(WEAPON.SCEPTER + "PROJECTILE");
-            sprite.generateByGrid(_txtImage, f.Rectangle.GET(5, 1255, 75, 25), 4, f.Vector2.X(85), 150, f.ORIGIN2D.BOTTOMCENTER);
+            sprite.generateByGrid(_txtImage, f.Rectangle.GET(5, 1255, 75, 25), 4, f.Vector2.X(85), 20, f.ORIGIN2D.BOTTOMCENTER);
             Character.projectileSprite = sprite;
         }
         getActiveNodeSprite() {

@@ -1,0 +1,79 @@
+[
+  {
+    "tileset": "Tileset.png",
+    "background": [
+      "Middleground.png",
+      "Background.png",
+      "Extension_blue.png"
+    ],
+    "floorDescription": [
+      {
+        "moving": false,
+        "type": "ThinRectangle",
+        "length": 2,
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "moving": true,
+        "type": "Rectangle",
+        "length": 2,
+        "position": {
+          "x": 3,
+          "y": 0
+        },
+        "speed": {
+          "x": 2,
+          "y": 0
+        }
+      },
+      {
+        "moving": false,
+        "type": "ThinRectangle",
+        "length": 3,
+        "position": {
+          "x": 13,
+          "y": -1
+        }
+      },
+      {
+        "moving": false,
+        "type": "ThinRectangle",
+        "length": 2,
+        "position": {
+          "x": 13,
+          "y": -1
+        }
+      },
+      {
+        "moving": false,
+        "type": "ThinRectangle",
+        "length": 2,
+        "position": {
+          "x": 15,
+          "y": 0
+        }
+      },
+      {
+        "moving": false,
+        "type": "ThinRectangle",
+        "length": 2,
+        "position": {
+          "x": 17,
+          "y": 1
+        }
+      },
+      {
+        "moving": false,
+        "type": "ThinRectangle",
+        "length": 2,
+        "position": {
+          "x": 19,
+          "y": 2
+        }
+      }
+    ]
+  }
+]

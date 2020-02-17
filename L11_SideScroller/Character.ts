@@ -56,15 +56,11 @@ namespace L11_SideScroller {
         );
         nodeSprite.activate(false);
         nodeSprite.addComponent(new f.ComponentTransform());
-        
+
         this.appendChild(nodeSprite);
       }
 
-      this.addEventListener(
-        "showNext",
-        this.showNextFrame,
-        true
-      );
+      this.addEventListener("showNext", this.showNextFrame, true);
 
       this.show(ACTION.IDLE);
       f.Loop.addEventListener(f.EVENT.LOOP_FRAME, this.update);
@@ -73,8 +69,7 @@ namespace L11_SideScroller {
     private showNextFrame = () => {
       this.getActiveNodeSprite().showFrameNext();
       this.framesSinceLock += 1;
-
-    }
+    };
 
     public static generateSprites(_txtImage: f.TextureImage): void {
       //Axe Sprites
@@ -92,7 +87,7 @@ namespace L11_SideScroller {
       sprite = new Sprite(ACTION.WALK + WEAPON.AXE);
       sprite.generateByGrid(
         _txtImage,
-        
+
         f.Rectangle.GET(45, 75, 80, 80),
         4,
         f.Vector2.X(85),
@@ -197,7 +192,7 @@ namespace L11_SideScroller {
         f.Rectangle.GET(5, 1255, 75, 25),
         4,
         f.Vector2.X(85),
-        150,
+        20,
         f.ORIGIN2D.BOTTOMCENTER
       );
       Character.projectileSprite = sprite;
@@ -206,23 +201,27 @@ namespace L11_SideScroller {
     private update = (_event: f.Eventƒ): void => {
       let timeFrame: number = f.Loop.timeFrameGame / 1000; // in seconds
 
-      
-      this.lastWeaponSwapTime += timeFrame;      
+      this.lastWeaponSwapTime += timeFrame;
       let activeNodeSprite: NodeSprite = this.getActiveNodeSprite();
       if (this.framesSinceLock > activeNodeSprite.lockedFrames) {
         if (activeNodeSprite.name == ACTION.ATTACK + WEAPON.SCEPTER) {
           this.spawnScepterProjectile();
         }
         this.lockedInAnimation = false;
-      };
-      this.speed.y += Character.gravity.y * timeFrame;
+      }
+      this.speed.y += Math.min(Character.gravity.y * timeFrame, Character.speedMax.y);
       let distance: f.Vector3 = f.Vector3.SCALE(this.speed, timeFrame);
 
       this.cmpTransform.local.translate(distance);
       this.checkCollision();
+      // console.log(this.cmpTransform.local.translation.y)
+      if(this.cmpTransform.local.translation.y <= -25) {
+        this.cmpTransform.local.translation = f.Vector3.Y(1);
+      }
     };
 
     private getActiveNodeSprite(): NodeSprite {
+      
       return <NodeSprite>this.getChildren().find(child => child.isActive);
     }
 
@@ -289,7 +288,7 @@ namespace L11_SideScroller {
         this.direction,
         f.Vector3.X(5)
       );
-      this.getParent().appendChild(projectile)
+      this.getParent().appendChild(projectile);
     }
 
     public getRectWorld(): f.Rectangle {
