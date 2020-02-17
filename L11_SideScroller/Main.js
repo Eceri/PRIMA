@@ -40,6 +40,13 @@ var L11_SideScroller;
         let playerTexture = new f.TextureImage();
         playerTexture.image = playerSpritesheet;
         L11_SideScroller.Character.generateSprites(playerTexture);
+        let floorSpritesheet = images.find(image => image.id == "tileset");
+        let floorTexture = new f.TextureImage();
+        floorTexture.image = floorSpritesheet;
+        let thinFloorSprite = images.find(image => image.id == "thinTile");
+        let thinFloorTexture = new f.TextureImage();
+        thinFloorTexture.image = thinFloorSprite;
+        L11_SideScroller.Floor.txtImage = thinFloorTexture;
         L11_SideScroller.level = new L11_SideScroller.Level(1);
         player = new L11_SideScroller.Character("Player");
         let game = new f.Node("Game");
@@ -58,7 +65,7 @@ var L11_SideScroller;
         let continueBtn = document.getElementById("continueBtn");
         let muteBtn = document.getElementById("muteBtn");
         let startBtn = document.getElementById("startBtn");
-        muteBtn.addEventListener("click", muteMusic);
+        muteBtn.addEventListener("click", muteAudio);
         startBtn.addEventListener("click", startGame);
         continueBtn.addEventListener("click", continueGame);
         f.RenderManager.initialize(false, false);
@@ -71,6 +78,7 @@ var L11_SideScroller;
         viewport.showSceneGraph();
         console.log(document.querySelector("#projectileSound"));
         L11_SideScroller.Character.projectileSound = document.querySelector("#projectileSound");
+        L11_SideScroller.Character.projectileSound.playbackRate = 2.5;
         function pauseGame() {
             currentTimeScale = 0;
             f.Time.game.setScale(currentTimeScale);
@@ -91,15 +99,17 @@ var L11_SideScroller;
             audio.loop = true;
             audio.play();
         }
-        function muteMusic() {
+        function muteAudio() {
             let audio = document.querySelector("audio");
             if (audio.muted) {
                 audio.muted = false;
                 audio.innerHTML = "Mute";
+                L11_SideScroller.Character.projectileSound.muted = false;
             }
             else {
                 audio.muted = true;
                 audio.innerHTML = "Unmute";
+                L11_SideScroller.Character.projectileSound.muted = true;
             }
         }
         //camera update
@@ -131,6 +141,10 @@ var L11_SideScroller;
                 else {
                     continueGame();
                 }
+            }
+            if (keysPressed[f.KEYBOARD_CODE.SPACE]) {
+                //to prevent page scroll
+                _event.preventDefault();
             }
         }
         function processInput() {

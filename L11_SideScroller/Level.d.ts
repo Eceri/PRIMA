@@ -7,7 +7,5 @@ declare namespace L11_SideScroller {
          * @param _id Id of the level. Starts at 1.
          */
         constructor(_id: number);
-        private generateFloorTiles;
-        static generateSprites(_txtImage: f.TextureImage): void;
     }
 }

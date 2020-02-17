@@ -298,15 +298,15 @@
         "signature": "c849459f67c526b02f54c27d063c26fe5a543b9aa5eb401e32ebf6c9f04f1bcb"
       },
       "./l11_sidescroller/floor.ts": {
-        "version": "287e500e17c7bc9a50dcfa82b601d51c3adcccd291b8e9ab1612f9364a5a9491",
-        "signature": "fc5e2b99a1b2fbed78b85fa09b3784311659e6e182b343f6006e4b6fd1b35cc8"
+        "version": "85db092cdca043d75233d19f77c4fac79d603f7429469075a1ca67574aca4d7f",
+        "signature": "b4feee9a1fbc5bafa7f22ae81a82ea8d654874eb46d04077d50ee260a410a51f"
       },
       "./l11_sidescroller/level.ts": {
-        "version": "f5d0403ffeb10e7d332e3f3545a77e0f91d77871a9b0ed8f7a8304997910cdd7",
-        "signature": "00b3d21860c9e60618ae2456dfe9193c5331370610af26d1a5a5fd5207959a00"
+        "version": "24aee05d42b584d88309fa82f61f4c32aebbd0c1f58cd8212febc4c80c1658b8",
+        "signature": "0389087938f2d479de63baf7786adad7d2a4ee22cbfa3eb091b3f8f6d0c9bc61"
       },
       "./l11_sidescroller/main.ts": {
-        "version": "7ef9e3bf36d981b06cf802d20d57dd2c942eb3275d6d399c1f5ff3fdcb5e2555",
+        "version": "1e80dd80bc7b8e4b8ae50168fa9d926c55c7b4091328e2aaf60e5dc84f20f27b",
         "signature": "be1b830c11a4ee3fc3a140ece2b7ac9afc4003e4d88479554c726681f653e973"
       },
       "./l11_sidescroller/projectile.ts": {
@@ -1659,22 +1659,9 @@
       "./l10_fudgecraft_combos/main.ts",
       "./l10_fudgecraft_combos/test.ts",
       "./l11_sidescroller/background.ts",
+      "./l11_sidescroller/character.ts",
       "./l11_sidescroller/collidableobject.ts",
       "./l11_sidescroller/floor.ts",
-      [
-        "./l11_sidescroller/level.ts",
-        [
-          {
-            "file": "./l11_sidescroller/level.ts",
-            "start": 1042,
-            "length": 13,
-            "messageText": "'spriteTexture' is declared but its value is never read.",
-            "category": 1,
-            "code": 6133,
-            "reportsUnnecessary": true
-          }
-        ]
-      ],
       "./l11_sidescroller/main.ts",
       "./l11_sidescroller/projectile.ts",
       "./l11_sidescroller/spritegenerator.ts",
@@ -1725,7 +1712,7 @@
       "./node_modules/@types/node/ts3.2/index.d.ts",
       "./node_modules/@types/webgl2/index.d.ts",
       "./node_modules/@types/ws/index.d.ts",
-      "./l11_sidescroller/character.ts"
+      "./l11_sidescroller/level.ts"
     ]
   },
   "version": "3.7.2"

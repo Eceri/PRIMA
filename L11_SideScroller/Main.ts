@@ -55,6 +55,19 @@ namespace L11_SideScroller {
     let playerTexture: f.TextureImage = new f.TextureImage();
     playerTexture.image = playerSpritesheet;
     Character.generateSprites(playerTexture);
+    
+    let floorSpritesheet: HTMLImageElement = images.find(
+      image => image.id == "tileset"
+    );
+    let floorTexture: f.TextureImage = new f.TextureImage();
+    floorTexture.image = floorSpritesheet;
+
+    let thinFloorSprite: HTMLImageElement = images.find(
+      image => image.id == "thinTile"
+    );
+    let thinFloorTexture: f.TextureImage = new f.TextureImage();
+    thinFloorTexture.image = thinFloorSprite;
+    Floor.txtImage = thinFloorTexture;
 
     level = new Level(1);
 
@@ -87,7 +100,7 @@ namespace L11_SideScroller {
     let muteBtn = document.getElementById("muteBtn");
     let startBtn = document.getElementById("startBtn");
     
-    muteBtn.addEventListener("click", muteMusic);
+    muteBtn.addEventListener("click", muteAudio);
     startBtn.addEventListener("click", startGame)
     continueBtn.addEventListener("click", continueGame)
 
@@ -105,6 +118,7 @@ namespace L11_SideScroller {
 
     console.log(document.querySelector("#projectileSound"))
     Character.projectileSound = document.querySelector("#projectileSound");
+    Character.projectileSound.playbackRate = 2.5
 
     function pauseGame() {
       currentTimeScale = 0;
@@ -128,14 +142,16 @@ namespace L11_SideScroller {
       audio.play();
     }
 
-    function muteMusic() {
+    function muteAudio() {
       let audio: HTMLAudioElement = document.querySelector("audio");
-      if (audio. muted){
+      if (audio.muted) {
         audio.muted = false;
         audio.innerHTML  = "Mute";
+        Character.projectileSound.muted = false;
       } else {
         audio.muted = true;
         audio.innerHTML  = "Unmute";
+        Character.projectileSound.muted = true;
       }
     }
 
@@ -178,6 +194,10 @@ namespace L11_SideScroller {
         }else {
           continueGame();
         }
+      }
+      if(keysPressed[f.KEYBOARD_CODE.SPACE]) {
+        //to prevent page scroll
+        _event.preventDefault();
       }
     }
 
