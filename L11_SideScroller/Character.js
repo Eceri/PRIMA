@@ -168,6 +168,7 @@ var L11_SideScroller;
             translation.y -= this.getRectWorld().height / 2;
             let projectile = new L11_SideScroller.Projectile("ScepterAttack", Character.projectileSprite, translation, this.direction, f.Vector3.X(5));
             this.getParent().appendChild(projectile);
+            Character.projectileSound.play();
         }
         getRectWorld() {
             return this.getActiveNodeSprite().getRectWorld();

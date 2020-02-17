@@ -81,7 +81,6 @@ namespace L11_SideScroller {
     document.addEventListener("keydown", handleKeyboard);
     document.addEventListener("keyup", handleKeyboard);
 
-
     //Buttons for Menus
     let menu: HTMLHtmlElement = <HTMLHtmlElement>document.getElementById("menu")
     let continueBtn = document.getElementById("continueBtn")
@@ -103,6 +102,9 @@ namespace L11_SideScroller {
     f.Loop.start(f.LOOP_MODE.TIME_GAME, 60);
 
     viewport.showSceneGraph();
+
+    console.log(document.querySelector("#projectileSound"))
+    Character.projectileSound = document.querySelector("#projectileSound");
 
     function pauseGame() {
       currentTimeScale = 0;
@@ -142,6 +144,7 @@ namespace L11_SideScroller {
       processInput();
 
       let timeFrame: number = f.Loop.timeFrameGame / 1000; // in seconds
+      
       //simple limit to animation, so the game can run at higher frame rates, while animation are slower.
       lastFrameTime += timeFrame;
       while (lastFrameTime > animationTime) {

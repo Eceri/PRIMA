@@ -290,8 +290,8 @@
         "signature": "d71f44da3c80483f17f89e046011f6488d17a3e03d26b1a35f3ef93803e62139"
       },
       "./l11_sidescroller/character.ts": {
-        "version": "c432ac309bb0f69ca3a7931f6df1e9fd838bb44f3bd281c49d7ea351ef2c460b",
-        "signature": "04ac82cf262acf2824498a68b95f8b0c1bb453fc53b469e1c282cc9c4b3950e9"
+        "version": "e962712aaf6a53d43ec60400b0d3864395984f6db82cfdb563ea4f117f355bcb",
+        "signature": "4f267ffc2c192927a3e7e977406781f3d9255f7df59a122776b69249d7dbf8e2"
       },
       "./l11_sidescroller/collidableobject.ts": {
         "version": "33516e092dc786a41aeb7b380c5438bfe9e00ab0f3fc081cd66ab2ac33166311",
@@ -306,7 +306,7 @@
         "signature": "00b3d21860c9e60618ae2456dfe9193c5331370610af26d1a5a5fd5207959a00"
       },
       "./l11_sidescroller/main.ts": {
-        "version": "417eb8e7094fd64ed866a05968bc0d6e7ed670b570779ed4bbf7fbe149f291b7",
+        "version": "7ef9e3bf36d981b06cf802d20d57dd2c942eb3275d6d399c1f5ff3fdcb5e2555",
         "signature": "be1b830c11a4ee3fc3a140ece2b7ac9afc4003e4d88479554c726681f653e973"
       },
       "./l11_sidescroller/projectile.ts": {
@@ -1659,7 +1659,6 @@
       "./l10_fudgecraft_combos/main.ts",
       "./l10_fudgecraft_combos/test.ts",
       "./l11_sidescroller/background.ts",
-      "./l11_sidescroller/character.ts",
       "./l11_sidescroller/collidableobject.ts",
       "./l11_sidescroller/floor.ts",
       [
@@ -1676,6 +1675,7 @@
           }
         ]
       ],
+      "./l11_sidescroller/main.ts",
       "./l11_sidescroller/projectile.ts",
       "./l11_sidescroller/spritegenerator.ts",
       "./pong/fudge/fudgecore.d.ts",
@@ -1725,7 +1725,7 @@
       "./node_modules/@types/node/ts3.2/index.d.ts",
       "./node_modules/@types/webgl2/index.d.ts",
       "./node_modules/@types/ws/index.d.ts",
-      "./l11_sidescroller/main.ts"
+      "./l11_sidescroller/character.ts"
     ]
   },
   "version": "3.7.2"

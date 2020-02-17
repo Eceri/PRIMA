@@ -22,6 +22,7 @@ namespace L11_SideScroller {
     private static sprites: Sprite[] = [];
 
     private static projectileSprite: Sprite;
+    public static projectileSound: HTMLAudioElement;
 
     private static speedMax: f.Vector2 = new f.Vector2(2.5, 10); // units per second
     private static gravity: f.Vector2 = f.Vector2.Y(-10);
@@ -221,7 +222,6 @@ namespace L11_SideScroller {
     };
 
     private getActiveNodeSprite(): NodeSprite {
-      
       return <NodeSprite>this.getChildren().find(child => child.isActive);
     }
 
@@ -289,6 +289,7 @@ namespace L11_SideScroller {
         f.Vector3.X(5)
       );
       this.getParent().appendChild(projectile);
+      Character.projectileSound.play();
     }
 
     public getRectWorld(): f.Rectangle {

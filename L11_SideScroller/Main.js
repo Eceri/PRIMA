@@ -69,6 +69,8 @@ var L11_SideScroller;
         f.Loop.addEventListener("loopFrame" /* LOOP_FRAME */, update);
         f.Loop.start(f.LOOP_MODE.TIME_GAME, 60);
         viewport.showSceneGraph();
+        console.log(document.querySelector("#projectileSound"));
+        L11_SideScroller.Character.projectileSound = document.querySelector("#projectileSound");
         function pauseGame() {
             currentTimeScale = 0;
             f.Time.game.setScale(currentTimeScale);

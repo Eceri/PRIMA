@@ -14,6 +14,7 @@ declare namespace L11_SideScroller {
     class Character extends f.Node {
         private static sprites;
         private static projectileSprite;
+        static projectileSound: HTMLAudioElement;
         private static speedMax;
         private static gravity;
         speed: f.Vector3;
