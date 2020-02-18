@@ -2,7 +2,9 @@
 
 [Zum Spiel](https://eceri.github.io/PRIMA/L11_SideScroller/Main.html)
 
+[Zum Code](https://github.com/Eceri/PRIMA/tree/master/L11_SideScroller)
 
+[Zu den Dokumenten](https://github.com/Eceri/PRIMA/tree/master/Dokumente)
 
 Checkliste
 
