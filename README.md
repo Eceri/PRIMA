@@ -4,7 +4,7 @@
 
 [Zum Code](https://github.com/Eceri/PRIMA/tree/master/L11_SideScroller)
 
-[Zu den Dokumenten](https://github.com/Eceri/PRIMA/tree/master/Dokumente)
+[Zu den Dokumenten](https://github.com/Eceri/PRIMA/tree/master/L11_SideScroller/Dokumente)
 
 Checkliste
 
